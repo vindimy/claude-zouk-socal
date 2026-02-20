@@ -1,0 +1,1497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zouk Calendar California | Brazilian Zouk Classes &amp; Events in LA, OC &amp; San Diego</title>
+  <meta name="description" content="Find Brazilian Zouk dance classes, workshops, and social events in Los Angeles, Orange County, and San Diego. SoCal's community calendar for Zouk dancers.">
+  <meta name="keywords" content="Brazilian Zouk, Zouk dance, Los Angeles Zouk, San Diego Zouk, Orange County Zouk, Zouk classes Southern California, Zouk socials SoCal, Zouk workshops LA">
+  <meta property="og:title" content="Zouk Calendar California">
+  <meta property="og:description" content="Brazilian Zouk classes, workshops &amp; socials across Southern California">
+  <meta property="og:url" content="https://www.zoukcal.com">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://www.zoukcal.com">
+
+  <!-- GA TAG HERE -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+
+  <style>
+    /* =====================================================
+       CSS CUSTOM PROPERTIES
+    ===================================================== */
+    :root {
+      --color-base:       #0d0d1a;
+      --color-base-light: #131326;
+      --color-base-mid:   #1a1a35;
+      --color-navy:       #0f1035;
+      --color-indigo:     #1c1b4b;
+
+      --color-gold:       #c9a84c;
+      --color-gold-light: #e8c96a;
+      --color-gold-dim:   rgba(201, 168, 76, 0.18);
+
+      --color-rose:       #e8a0b4;
+      --color-rose-dim:   rgba(232, 160, 180, 0.15);
+
+      --color-text:       #f0ece0;
+      --color-text-muted: #a09880;
+      --color-text-dim:   rgba(240, 236, 224, 0.62);
+      --color-border:     rgba(201, 168, 76, 0.2);
+
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body:    'DM Sans', system-ui, sans-serif;
+
+      --space-xs:  0.5rem;
+      --space-sm:  1rem;
+      --space-md:  1.5rem;
+      --space-lg:  2.5rem;
+      --space-xl:  4rem;
+      --space-2xl: 6rem;
+
+      --radius-sm:   8px;
+      --radius-md:   16px;
+      --radius-lg:   24px;
+      --radius-full: 999px;
+
+      --shadow-gold: 0 0 32px rgba(201, 168, 76, 0.14);
+      --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.4);
+
+      --transition:      0.3s ease;
+      --transition-slow: 0.6s ease;
+
+      --nav-height: 70px;
+      --max-width:  1200px;
+    }
+
+    /* =====================================================
+       RESET & BASE
+    ===================================================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--color-base);
+      color: var(--color-text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    img  { max-width: 100%; display: block; }
+    a    { color: inherit; text-decoration: none; }
+    ul   { list-style: none; }
+
+    /* =====================================================
+       TYPOGRAPHY
+    ===================================================== */
+    h1, h2, h3, h4 { font-family: var(--font-display); line-height: 1.2; }
+    h1 { font-size: clamp(2.8rem, 7vw, 5rem);  font-weight: 600; }
+    h2 { font-size: clamp(2rem,   4vw, 3rem);  font-weight: 500; }
+    h3 { font-size: clamp(1.3rem, 2.5vw, 1.8rem); font-weight: 500; }
+
+    .section-heading          { text-align: center; margin-bottom: var(--space-lg); }
+    .section-heading h2       { color: var(--color-text); margin-bottom: var(--space-xs); }
+    .section-heading .subtitle{ color: var(--color-text-muted); font-size: 1.05rem; }
+    .gold-accent              { color: var(--color-gold); }
+
+    /* =====================================================
+       LAYOUT
+    ===================================================== */
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+    }
+    section { padding: var(--space-2xl) 0; }
+
+    /* =====================================================
+       SCROLL ANIMATIONS
+    ===================================================== */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-in.visible          { opacity: 1; transform: translateY(0); }
+    .fade-in-delay-1          { transition-delay: 0.12s; }
+    .fade-in-delay-2          { transition-delay: 0.24s; }
+    .fade-in-delay-3          { transition-delay: 0.36s; }
+    .fade-in-delay-4          { transition-delay: 0.48s; }
+
+    /* =====================================================
+       BUTTONS
+    ===================================================== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      padding: 0.75rem 1.75rem;
+      border-radius: var(--radius-full);
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition);
+      border: 2px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--color-gold);
+      color: var(--color-base);
+      border-color: var(--color-gold);
+    }
+    .btn-primary:hover {
+      background: var(--color-gold-light);
+      border-color: var(--color-gold-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(201, 168, 76, 0.35);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--color-text);
+      border-color: rgba(240, 236, 224, 0.35);
+    }
+    .btn-outline:hover {
+      border-color: var(--color-gold);
+      color: var(--color-gold);
+      transform: translateY(-2px);
+    }
+
+    .btn-whatsapp {
+      background: #25D366;
+      color: #fff;
+      border-color: #25D366;
+      font-size: 1.05rem;
+      padding: 1rem 2rem;
+    }
+    .btn-whatsapp:hover {
+      background: #1fbd5a;
+      border-color: #1fbd5a;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.35);
+    }
+
+    /* =====================================================
+       WAVE DIVIDERS
+    ===================================================== */
+    .wave-divider          { width: 100%; overflow: hidden; line-height: 0; }
+    .wave-divider svg      { display: block; width: 100%; }
+
+    /* =====================================================
+       NAVIGATION
+    ===================================================== */
+    #navbar {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 1000;
+      height: var(--nav-height);
+      display: flex;
+      align-items: center;
+      background: rgba(13, 13, 26, 0.82);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--color-border);
+      transition: background var(--transition), box-shadow var(--transition);
+    }
+    #navbar.scrolled {
+      background: rgba(13, 13, 26, 0.97);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
+    }
+
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.65rem;
+      font-weight: 600;
+      color: var(--color-text);
+      letter-spacing: 0.02em;
+      position: relative;
+      padding-bottom: 3px;
+    }
+    .nav-logo::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 100%; height: 2px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='4'%3E%3Cpath d='M0 2 Q20 0 40 2 Q60 4 80 2' stroke='%23c9a84c' stroke-width='1.5' fill='none'/%3E%3C/svg%3E") repeat-x center;
+      background-size: 50px 3px;
+    }
+    .nav-logo span { color: var(--color-gold); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: var(--space-lg);
+    }
+    .nav-links a {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--color-text-dim);
+      transition: color var(--transition);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .nav-links a:hover { color: var(--color-gold); }
+
+    .nav-cta { margin-left: var(--space-sm); }
+    .nav-cta .btn { padding: 0.5rem 1.2rem; font-size: 0.85rem; }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 8px;
+      background: none;
+      border: none;
+      z-index: 1001;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--color-text);
+      transition: var(--transition);
+      border-radius: 2px;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Mobile menu */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: var(--nav-height); left: 0; right: 0;
+      background: rgba(13, 13, 26, 0.98);
+      backdrop-filter: blur(14px);
+      padding: var(--space-lg) var(--space-md);
+      flex-direction: column;
+      gap: var(--space-md);
+      border-bottom: 1px solid var(--color-border);
+      z-index: 999;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--color-text-dim);
+      padding: var(--space-xs) 0;
+      border-bottom: 1px solid var(--color-border);
+      transition: color var(--transition);
+    }
+    .mobile-menu a:hover         { color: var(--color-gold); }
+    .mobile-menu .btn            { width: 100%; justify-content: center; margin-top: var(--space-xs); }
+
+    /* =====================================================
+       HERO
+    ===================================================== */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding-top: var(--nav-height);
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 30% 50%, #1c1b4b 0%, transparent 60%),
+        radial-gradient(ellipse at 75% 20%, #2a0f30 0%, transparent 50%),
+        linear-gradient(160deg, #0f1035 0%, #0d0d1a 55%, #140d1e 100%);
+    }
+
+    #hero-canvas {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      opacity: 0.55;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: var(--space-2xl) var(--space-md);
+      max-width: 820px;
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      border: 1px solid var(--color-border);
+      padding: 0.4rem 1.1rem;
+      border-radius: var(--radius-full);
+      margin-bottom: var(--space-md);
+    }
+
+    .hero-title {
+      color: var(--color-text);
+      margin-bottom: var(--space-md);
+      text-shadow: 0 4px 40px rgba(0, 0, 0, 0.6);
+    }
+    .hero-title em { font-style: italic; color: var(--color-gold); }
+
+    .hero-subtitle {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: var(--color-text-dim);
+      margin-bottom: var(--space-lg);
+      max-width: 580px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: var(--space-sm);
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: var(--space-lg);
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      opacity: 0.55;
+      animation: bounce 2.2s ease-in-out infinite;
+    }
+    .scroll-indicator span {
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+    }
+    .scroll-arrow {
+      width: 20px; height: 20px;
+      border-right: 2px solid var(--color-gold);
+      border-bottom: 2px solid var(--color-gold);
+      transform: rotate(45deg);
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(9px); }
+    }
+
+    /* =====================================================
+       ABOUT
+    ===================================================== */
+    #about { background: var(--color-base-light); }
+
+    .about-text {
+      max-width: 680px;
+      margin: 0 auto var(--space-xl);
+      text-align: center;
+      font-size: 1.1rem;
+      color: var(--color-text-dim);
+      line-height: 1.9;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-md);
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    .feature-card {
+      background: var(--color-base-mid);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: var(--space-lg) var(--space-md);
+      text-align: center;
+      transition: var(--transition);
+    }
+    .feature-card:hover {
+      border-color: var(--color-gold);
+      box-shadow: var(--shadow-gold);
+      transform: translateY(-4px);
+    }
+    .feature-icon { font-size: 2.6rem; margin-bottom: var(--space-sm); display: block; }
+    .feature-card h3 { font-size: 1.2rem; color: var(--color-gold); margin-bottom: var(--space-xs); }
+    .feature-card p  { font-size: 0.9rem; color: var(--color-text-muted); }
+
+    /* =====================================================
+       CALENDAR
+    ===================================================== */
+    #calendar { background: var(--color-base); }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-xs);
+      margin-bottom: var(--space-lg);
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: 2px solid var(--color-border);
+      color: var(--color-text-muted);
+      padding: 0.6rem 1.6rem;
+      border-radius: var(--radius-full);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .tab-btn:hover      { border-color: var(--color-gold); color: var(--color-gold); }
+    .tab-btn.active     { background: var(--color-gold); border-color: var(--color-gold); color: var(--color-base); }
+
+    .tab-panel          { display: none; }
+    .tab-panel.active   { display: block; }
+
+    .calendar-card {
+      background: var(--color-base-mid);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+    }
+    .calendar-card iframe {
+      width: 100%; height: 600px;
+      border: none; display: block;
+    }
+    .calendar-footer {
+      padding: var(--space-sm) var(--space-md);
+      border-top: 1px solid var(--color-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+    }
+    .calendar-footer span { font-size: 0.8rem; color: var(--color-text-muted); }
+    .calendar-footer a    { font-size: 0.85rem; color: var(--color-gold); transition: color var(--transition); }
+    .calendar-footer a:hover { color: var(--color-gold-light); }
+
+    /* =====================================================
+       TEACHERS
+    ===================================================== */
+    #teachers { background: var(--color-base-light); }
+
+    .region-tabs {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-xs);
+      margin-bottom: var(--space-lg);
+      flex-wrap: wrap;
+    }
+
+    .region-btn {
+      background: transparent;
+      border: 1px solid var(--color-border);
+      color: var(--color-text-muted);
+      padding: 0.45rem 1.2rem;
+      border-radius: var(--radius-full);
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .region-btn:hover  { border-color: var(--color-rose); color: var(--color-rose); }
+    .region-btn.active { background: var(--color-rose-dim); border-color: var(--color-rose); color: var(--color-rose); }
+
+    .teachers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-md); }
+
+    .region-panel         { display: none; grid-column: 1 / -1; }
+    .region-panel.active  { display: contents; }
+
+    .teacher-card {
+      background: var(--color-base-mid);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: var(--space-lg) var(--space-md);
+      text-align: center;
+      transition: var(--transition);
+    }
+    .teacher-card:hover {
+      border-color: var(--color-rose);
+      box-shadow: 0 0 32px rgba(232, 160, 180, 0.12);
+      transform: translateY(-4px);
+    }
+
+    .teacher-photo {
+      width: 100px; height: 100px;
+      border-radius: 50%;
+      margin: 0 auto var(--space-sm);
+      object-fit: cover;
+      border: 3px solid var(--color-border);
+      transition: border-color var(--transition);
+    }
+    .teacher-card:hover .teacher-photo { border-color: var(--color-rose); }
+
+    .teacher-region {
+      display: inline-block;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-rose);
+      background: var(--color-rose-dim);
+      border: 1px solid rgba(232, 160, 180, 0.3);
+      padding: 0.2rem 0.75rem;
+      border-radius: var(--radius-full);
+      margin-bottom: var(--space-xs);
+    }
+
+    .teacher-name { font-family: var(--font-display); font-size: 1.45rem; margin-bottom: var(--space-xs); }
+    .teacher-bio  { font-size: 0.875rem; color: var(--color-text-muted); margin-bottom: var(--space-sm); line-height: 1.75; }
+
+    .teacher-placeholder { opacity: 0.45; }
+
+    /* =====================================================
+       ORGANIZERS
+    ===================================================== */
+    #organizers { background: var(--color-base); }
+
+    .organizers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: var(--space-md);
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .organizer-card {
+      background: var(--color-base-mid);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      transition: var(--transition);
+    }
+    .organizer-card:hover {
+      border-color: var(--color-gold);
+      box-shadow: var(--shadow-gold);
+      transform: translateY(-3px);
+    }
+
+    .organizer-photo {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 2px solid var(--color-border);
+    }
+
+    .organizer-info  { flex: 1; min-width: 0; }
+    .organizer-name  { font-family: var(--font-display); font-size: 1.2rem; margin-bottom: 4px; }
+
+    .organizer-role {
+      display: inline-block;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      background: var(--color-gold-dim);
+      border: 1px solid rgba(201, 168, 76, 0.3);
+      padding: 0.15rem 0.65rem;
+      border-radius: var(--radius-full);
+      margin-bottom: 6px;
+    }
+
+    .organizer-tagline { font-size: 0.82rem; color: var(--color-text-muted); font-style: italic; margin-bottom: 8px; }
+
+    /* =====================================================
+       SOCIAL LINK ICON BUTTONS (shared)
+    ===================================================== */
+    .social-links { display: flex; gap: var(--space-xs); justify-content: center; }
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: var(--color-base);
+      border: 1px solid var(--color-border);
+      color: var(--color-text-muted);
+      font-size: 0.85rem;
+      transition: var(--transition);
+    }
+    .social-link:hover {
+      border-color: var(--color-gold);
+      color: var(--color-gold);
+      background: var(--color-gold-dim);
+    }
+
+    /* =====================================================
+       JOIN US
+    ===================================================== */
+    #join {
+      position: relative;
+      background: linear-gradient(140deg, #1a0f2e 0%, #2a1a2e 50%, #1a1020 100%);
+      text-align: center;
+    }
+    #join::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 100%, rgba(201, 168, 76, 0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .join-content {
+      position: relative;
+      z-index: 1;
+      max-width: 660px;
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+    }
+    .join-content h2 { margin-bottom: var(--space-md); }
+
+    .join-message {
+      font-size: 1.1rem;
+      color: var(--color-text-dim);
+      line-height: 1.9;
+      margin-bottom: var(--space-lg);
+      font-style: italic;
+    }
+
+    .join-cta-wrap { display: flex; flex-direction: column; align-items: center; gap: var(--space-sm); }
+    .join-note     { font-size: 0.82rem; color: var(--color-text-muted); letter-spacing: 0.06em; }
+
+    /* =====================================================
+       FOOTER
+    ===================================================== */
+    footer {
+      background: #09090f;
+      border-top: 1px solid var(--color-border);
+      padding: var(--space-xl) 0 var(--space-lg);
+    }
+
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-xl);
+      margin-bottom: var(--space-xl);
+    }
+
+    .footer-brand .nav-logo { display: inline-block; margin-bottom: var(--space-sm); }
+    .footer-tagline         { font-size: 0.9rem; color: var(--color-text-muted); font-style: italic; }
+
+    .footer-nav h4 {
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      margin-bottom: var(--space-sm);
+      font-weight: 600;
+    }
+    .footer-nav ul   { display: flex; flex-direction: column; gap: 8px; }
+    .footer-nav a    { font-size: 0.9rem; color: var(--color-text-muted); transition: color var(--transition); }
+    .footer-nav a:hover { color: var(--color-gold); }
+
+    .footer-bottom {
+      border-top: 1px solid var(--color-border);
+      padding-top: var(--space-md);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+    }
+    .footer-bottom p { font-size: 0.8rem; color: var(--color-text-muted); line-height: 1.65; }
+
+    /* =====================================================
+       RESPONSIVE
+    ===================================================== */
+    @media (max-width: 1024px) {
+      .teachers-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      :root { --space-2xl: 4rem; }
+
+      .nav-links, .nav-cta { display: none; }
+      .hamburger            { display: flex; }
+
+      .features-grid  { grid-template-columns: 1fr; max-width: 380px; }
+      .teachers-grid  { grid-template-columns: repeat(2, 1fr); }
+      .footer-inner   { grid-template-columns: 1fr; gap: var(--space-lg); }
+      .footer-bottom  { flex-direction: column; }
+    }
+
+    @media (max-width: 480px) {
+      .teachers-grid    { grid-template-columns: 1fr; }
+      .organizers-grid  { grid-template-columns: 1fr; }
+      .hero-ctas        { flex-direction: column; align-items: center; }
+      .tabs             { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =====================================================
+       NAVIGATION
+  ===================================================== -->
+  <nav id="navbar" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo" aria-label="ZoukCal — home">Zouk<span>Cal</span></a>
+
+      <ul class="nav-links" role="list">
+        <li><a href="#calendar">Classes &amp; Events</a></li>
+        <li><a href="#teachers">Teachers</a></li>
+        <li><a href="#organizers">Organizers</a></li>
+        <li><a href="#join">Join Us</a></li>
+      </ul>
+
+      <div class="nav-cta">
+        <a href="https://chat.whatsapp.com/HgPl6fK4h4zIjdHox06gbp?mode=gi_t"
+           class="btn btn-primary"
+           target="_blank" rel="noopener noreferrer"
+           aria-label="Join our WhatsApp community">
+          💬 Join Community
+        </a>
+      </div>
+
+      <button class="hamburger" id="hamburger"
+              aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
+    <a href="#calendar"   onclick="closeMobileMenu()">Classes &amp; Events</a>
+    <a href="#teachers"   onclick="closeMobileMenu()">Teachers</a>
+    <a href="#organizers" onclick="closeMobileMenu()">Organizers</a>
+    <a href="#join"       onclick="closeMobileMenu()">Join Us</a>
+    <a href="https://chat.whatsapp.com/HgPl6fK4h4zIjdHox06gbp?mode=gi_t"
+       class="btn btn-whatsapp"
+       target="_blank" rel="noopener noreferrer">
+      💬 Join WhatsApp Community
+    </a>
+  </div>
+
+  <main>
+
+    <!-- =====================================================
+         HERO
+    ===================================================== -->
+    <section id="hero" aria-label="Hero">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <canvas id="hero-canvas" aria-hidden="true"></canvas>
+
+      <div class="hero-content">
+        <span class="hero-eyebrow fade-in">Southern California · Brazilian Zouk</span>
+        <h1 class="hero-title fade-in fade-in-delay-1">
+          Find Your <em>Flow</em><br>in Southern California
+        </h1>
+        <p class="hero-subtitle fade-in fade-in-delay-2">
+          Brazilian Zouk classes, workshops &amp; socials across<br>
+          Los Angeles, Orange County, and San Diego
+        </p>
+        <div class="hero-ctas fade-in fade-in-delay-3">
+          <a href="#calendar" class="btn btn-primary">Explore Events</a>
+          <a href="https://chat.whatsapp.com/HgPl6fK4h4zIjdHox06gbp?mode=gi_t"
+             class="btn btn-outline"
+             target="_blank" rel="noopener noreferrer">
+            💬 Join the Community
+          </a>
+        </div>
+      </div>
+
+      <div class="scroll-indicator" aria-hidden="true">
+        <span>Scroll</span>
+        <div class="scroll-arrow"></div>
+      </div>
+    </section>
+
+    <!-- Wave -->
+    <div class="wave-divider" aria-hidden="true">
+      <svg viewBox="0 0 1440 64" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <path d="M0 0 Q180 64 360 32 Q540 0 720 32 Q900 64 1080 32 Q1260 0 1440 32 L1440 0 Z" fill="#0d0d1a"/>
+        <path d="M0 64 Q180 0 360 32 Q540 64 720 32 Q900 0 1080 32 Q1260 64 1440 32 L1440 64 Z" fill="#131326"/>
+      </svg>
+    </div>
+
+    <!-- =====================================================
+         ABOUT
+    ===================================================== -->
+    <section id="about" aria-label="About Brazilian Zouk">
+      <div class="container">
+        <div class="section-heading fade-in">
+          <h2>What is <span class="gold-accent">Brazilian Zouk?</span></h2>
+        </div>
+        <p class="about-text fade-in fade-in-delay-1">
+          Brazilian Zouk is a partner dance born in Brazil, celebrated worldwide for its flowing
+          movements, deep musical connection, and intimate lead-follow dialogue. Whether you're
+          lacing up your dance shoes for the first time or you're a seasoned Zouk dancer —
+          SoCal's Zouk community is here for you.
+        </p>
+        <div class="features-grid">
+          <div class="feature-card fade-in fade-in-delay-1">
+            <span class="feature-icon" aria-hidden="true">🎵</span>
+            <h3>Music</h3>
+            <p>Move to the rhythm of Brazilian beats, from zouk-lambada to modern electronic flows</p>
+          </div>
+          <div class="feature-card fade-in fade-in-delay-2">
+            <span class="feature-icon" aria-hidden="true">💃</span>
+            <h3>Connection</h3>
+            <p>A dance built on trust, presence, and the dialogue between two people</p>
+          </div>
+          <div class="feature-card fade-in fade-in-delay-3">
+            <span class="feature-icon" aria-hidden="true">🌊</span>
+            <h3>Flow</h3>
+            <p>Fluid, wavelike movements that feel as natural as breathing when you find your rhythm</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Wave -->
+    <div class="wave-divider" aria-hidden="true" style="background:#131326;">
+      <svg viewBox="0 0 1440 64" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <path d="M0 64 Q360 0 720 32 Q1080 64 1440 0 L1440 64 Z" fill="#0d0d1a"/>
+      </svg>
+    </div>
+
+    <!-- =====================================================
+         CALENDAR
+    ===================================================== -->
+    <section id="calendar" aria-label="Classes, Workshops and Events">
+      <div class="container">
+        <div class="section-heading fade-in">
+          <h2>Classes, Workshops <span class="gold-accent">&amp; Events</span></h2>
+          <p class="subtitle">Stay up to date with what's happening across SoCal</p>
+        </div>
+
+        <div class="tabs fade-in fade-in-delay-1" role="tablist" aria-label="Regional calendars">
+          <button class="tab-btn active"
+                  id="tab-laoc" role="tab"
+                  aria-selected="true" aria-controls="panel-laoc"
+                  onclick="switchCalTab('laoc')">
+            Los Angeles / Orange County
+          </button>
+          <button class="tab-btn"
+                  id="tab-sd" role="tab"
+                  aria-selected="false" aria-controls="panel-sd"
+                  onclick="switchCalTab('sd')">
+            San Diego
+          </button>
+        </div>
+
+        <div class="tab-panel active fade-in fade-in-delay-2"
+             id="panel-laoc" role="tabpanel" aria-labelledby="tab-laoc">
+          <div class="calendar-card">
+            <iframe
+              src="https://calendar.google.com/calendar/embed?src=ZTE0dXBzMjducDJjM21xZjU5YW5wYTdmMmNAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&ctz=America%2FLos_Angeles&mode=AGENDA&showTitle=0&showNav=1&showPrint=0&showTabs=0&showCalendars=0&bgcolor=%230d0d1a&color=%23c9a84c"
+              title="LA / Orange County Zouk Calendar"
+              scrolling="no"
+              loading="lazy"
+              aria-label="Los Angeles and Orange County Zouk events calendar">
+            </iframe>
+            <div class="calendar-footer">
+              <span>🕐 Times shown in Pacific Time</span>
+              <a href="https://chat.whatsapp.com/HgPl6fK4h4zIjdHox06gbp?mode=gi_t"
+                 target="_blank" rel="noopener noreferrer">
+                Want your event listed? Submit via WhatsApp →
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-panel"
+             id="panel-sd" role="tabpanel" aria-labelledby="tab-sd">
+          <div class="calendar-card">
+            <iframe
+              src="https://calendar.google.com/calendar/embed?src=ZnVsZTNuY2ZldW04ZzhwaGYxM2p0MnVhYzRAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&ctz=America%2FLos_Angeles&mode=AGENDA&showTitle=0&showNav=1&showPrint=0&showTabs=0&showCalendars=0&bgcolor=%230d0d1a&color=%23c9a84c"
+              title="San Diego Zouk Calendar"
+              scrolling="no"
+              loading="lazy"
+              aria-label="San Diego Zouk events calendar">
+            </iframe>
+            <div class="calendar-footer">
+              <span>🕐 Times shown in Pacific Time</span>
+              <a href="https://chat.whatsapp.com/HgPl6fK4h4zIjdHox06gbp?mode=gi_t"
+                 target="_blank" rel="noopener noreferrer">
+                Want your event listed? Submit via WhatsApp →
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Wave -->
+    <div class="wave-divider" aria-hidden="true" style="background:#0d0d1a;">
+      <svg viewBox="0 0 1440 64" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <path d="M0 0 Q360 64 720 32 Q1080 0 1440 64 L1440 0 Z" fill="#131326"/>
+      </svg>
+    </div>
+
+    <!-- =====================================================
+         TEACHERS
+    ===================================================== -->
+    <section id="teachers" aria-label="Meet the Teachers">
+      <div class="container">
+        <div class="section-heading fade-in">
+          <h2>Meet the <span class="gold-accent">Teachers</span></h2>
+          <p class="subtitle">Learn from passionate instructors across Southern California</p>
+        </div>
+
+        <!-- TODO: Replace placeholder teachers with real data -->
+        <div class="region-tabs fade-in fade-in-delay-1" role="tablist" aria-label="Teacher regions">
+          <button class="region-btn active"
+                  role="tab" aria-selected="true" aria-controls="teachers-la"
+                  onclick="switchRegion('la')">Los Angeles</button>
+          <button class="region-btn"
+                  role="tab" aria-selected="false" aria-controls="teachers-oc"
+                  onclick="switchRegion('oc')">Orange County</button>
+          <button class="region-btn"
+                  role="tab" aria-selected="false" aria-controls="teachers-sd"
+                  onclick="switchRegion('sd')">San Diego</button>
+        </div>
+
+        <div class="teachers-grid">
+
+          <!-- LOS ANGELES -->
+          <div class="region-panel active" id="teachers-la">
+
+            <article class="teacher-card fade-in">
+              <!-- TODO: Replace with real photo -->
+              <img src="https://i.pravatar.cc/150?u=aneska-franca"
+                   alt="Aneska Franca" class="teacher-photo"
+                   loading="lazy" width="100" height="100">
+              <span class="teacher-region">West Los Angeles</span>
+              <h3 class="teacher-name">Aneska Franca</h3>
+              <p class="teacher-bio"><!-- TODO: Add bio -->Zouk instructor based in West Los Angeles.</p>
+              <div class="social-links">
+                <a href="https://www.instagram.com/aneskafranca/"
+                   class="social-link" target="_blank" rel="noopener noreferrer"
+                   aria-label="Aneska Franca on Instagram">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </a>
+              </div>
+            </article>
+
+            <article class="teacher-card fade-in fade-in-delay-1">
+              <!-- TODO: Replace with real photo -->
+              <img src="https://i.pravatar.cc/150?u=adam-j-craig"
+                   alt="Adam J Craig" class="teacher-photo"
+                   loading="lazy" width="100" height="100">
+              <span class="teacher-region">Burbank</span>
+              <h3 class="teacher-name">Adam J Craig</h3>
+              <p class="teacher-bio"><!-- TODO: Add bio -->Zouk instructor based in Burbank.</p>
+              <div class="social-links">
+                <a href="https://www.instagram.com/adamjcraig/"
+                   class="social-link" target="_blank" rel="noopener noreferrer"
+                   aria-label="Adam J Craig on Instagram">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </a>
+              </div>
+            </article>
+
+            <article class="teacher-card fade-in fade-in-delay-2">
+              <!-- TODO: Replace with real photo -->
+              <img src="https://i.pravatar.cc/150?u=stephanie-tong"
+                   alt="Stephanie Tong" class="teacher-photo"
+                   loading="lazy" width="100" height="100">
+              <span class="teacher-region">Burbank</span>
+              <h3 class="teacher-name">Stephanie Tong</h3>
+              <p class="teacher-bio"><!-- TODO: Add bio -->Zouk instructor based in Burbank.</p>
+              <div class="social-links">
+                <a href="https://www.instagram.com/stonganie/"
+                   class="social-link" target="_blank" rel="noopener noreferrer"
+                   aria-label="Stephanie Tong on Instagram">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </a>
+              </div>
+            </article>
+
+            <article class="teacher-card fade-in fade-in-delay-3">
+              <!-- TODO: Replace with real photo -->
+              <img src="https://i.pravatar.cc/150?u=myla-ostroshenko"
+                   alt="Myla Ostroshenko" class="teacher-photo"
+                   loading="lazy" width="100" height="100">
+              <span class="teacher-region">Downtown Los Angeles</span>
+              <h3 class="teacher-name">Myla Ostroshenko</h3>
+              <p class="teacher-bio"><!-- TODO: Add bio -->Zouk instructor based in Downtown Los Angeles.</p>
+              <div class="social-links">
+                <a href="https://www.instagram.com/mylaosa/"
+                   class="social-link" target="_blank" rel="noopener noreferrer"
+                   aria-label="Myla Ostroshenko on Instagram">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </a>
+              </div>
+            </article>
+
+            <article class="teacher-card fade-in fade-in-delay-4">
+              <!-- TODO: Replace with real photo -->
+              <img src="https://i.pravatar.cc/150?u=nathalia-carbajal"
+                   alt="Nathalia Carbajal" class="teacher-photo"
+                   loading="lazy" width="100" height="100">
+              <span class="teacher-region">Torrance</span>
+              <h3 class="teacher-name">Nathalia Carbajal</h3>
+              <p class="teacher-bio"><!-- TODO: Add bio -->Zouk instructor based in Torrance.</p>
+              <div class="social-links">
+                <a href="https://www.instagram.com/nathy.carbajal/"
+                   class="social-link" target="_blank" rel="noopener noreferrer"
+                   aria-label="Nathalia Carbajal on Instagram">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </a>
+              </div>
+            </article>
+
+          </div><!-- /teachers-la -->
+
+          <!-- ORANGE COUNTY -->
+          <div class="region-panel" id="teachers-oc">
+
+            <article class="teacher-card fade-in">
+              <!-- TODO: Replace with real photo -->
+              <img src="https://i.pravatar.cc/150?u=christina-montoya"
+                   alt="Christina Montoya" class="teacher-photo"
+                   loading="lazy" width="100" height="100">
+              <span class="teacher-region">Buena Park</span>
+              <h3 class="teacher-name">Christina Montoya</h3>
+              <p class="teacher-bio"><!-- TODO: Add bio -->Zouk instructor based in Buena Park.</p>
+              <div class="social-links">
+                <a href="https://www.instagram.com/christinazouk/"
+                   class="social-link" target="_blank" rel="noopener noreferrer"
+                   aria-label="Christina Montoya on Instagram">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </a>
+                <a href="https://www.zoukoc.com/"
+                   class="social-link" target="_blank" rel="noopener noreferrer"
+                   aria-label="ZoukOC website">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                </a>
+              </div>
+            </article>
+
+            <article class="teacher-card fade-in fade-in-delay-1">
+              <!-- TODO: Replace with real photo -->
+              <img src="https://i.pravatar.cc/150?u=brayden-schmidt"
+                   alt="Brayden Schmidt" class="teacher-photo"
+                   loading="lazy" width="100" height="100">
+              <span class="teacher-region">Buena Park</span>
+              <h3 class="teacher-name">Brayden Schmidt</h3>
+              <p class="teacher-bio"><!-- TODO: Add bio -->Zouk instructor based in Buena Park.</p>
+              <div class="social-links">
+                <a href="https://www.instagram.com/braydenzouk/"
+                   class="social-link" target="_blank" rel="noopener noreferrer"
+                   aria-label="Brayden Schmidt on Instagram">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </a>
+                <a href="https://www.zoukoc.com/"
+                   class="social-link" target="_blank" rel="noopener noreferrer"
+                   aria-label="ZoukOC website">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                </a>
+              </div>
+            </article>
+
+            <article class="teacher-card fade-in fade-in-delay-2">
+              <!-- TODO: Replace with real photo -->
+              <img src="https://i.pravatar.cc/150?u=sarah-miles"
+                   alt="Sarah Miles" class="teacher-photo"
+                   loading="lazy" width="100" height="100">
+              <span class="teacher-region">Buena Park</span>
+              <h3 class="teacher-name">Sarah Miles</h3>
+              <p class="teacher-bio"><!-- TODO: Add bio -->Zouk instructor based in Buena Park.</p>
+              <div class="social-links">
+                <a href="https://www.instagram.com/sarahzouk/"
+                   class="social-link" target="_blank" rel="noopener noreferrer"
+                   aria-label="Sarah Miles on Instagram">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </a>
+                <a href="https://www.zoukoc.com/"
+                   class="social-link" target="_blank" rel="noopener noreferrer"
+                   aria-label="ZoukOC website">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                </a>
+              </div>
+            </article>
+
+            <article class="teacher-card fade-in fade-in-delay-3">
+              <!-- TODO: Replace with real photo -->
+              <img src="https://i.pravatar.cc/150?u=marissa-a-rivera"
+                   alt="Marissa A Rivera" class="teacher-photo"
+                   loading="lazy" width="100" height="100">
+              <span class="teacher-region">Costa Mesa</span>
+              <h3 class="teacher-name">Marissa A Rivera</h3>
+              <p class="teacher-bio"><!-- TODO: Add bio -->Zouk instructor based in Costa Mesa.</p>
+              <div class="social-links">
+                <a href="https://www.instagram.com/marissa.a.rivera/"
+                   class="social-link" target="_blank" rel="noopener noreferrer"
+                   aria-label="Marissa A Rivera on Instagram">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </a>
+                <a href="https://www.instagram.com/dancewithmares/"
+                   class="social-link" target="_blank" rel="noopener noreferrer"
+                   aria-label="Dance With Mares on Instagram">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </a>
+                <a href="https://www.instagram.com/zoukvibes/"
+                   class="social-link" target="_blank" rel="noopener noreferrer"
+                   aria-label="Zouk Vibes on Instagram">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </a>
+              </div>
+            </article>
+
+          </div><!-- /teachers-oc -->
+
+          <!-- SAN DIEGO -->
+          <div class="region-panel" id="teachers-sd">
+            <!-- TODO: Add real SD teacher name and bio here -->
+            <article class="teacher-card teacher-placeholder fade-in">
+              <img src="https://i.pravatar.cc/150?u=sd-teacher-1"
+                   alt="SD Teacher" class="teacher-photo" loading="lazy" width="100" height="100">
+              <span class="teacher-region">San Diego</span>
+              <h3 class="teacher-name">Coming Soon</h3>
+              <p class="teacher-bio">San Diego Zouk instructor — details coming soon.</p>
+            </article>
+            <!-- TODO: Add real SD teacher name and bio here -->
+            <article class="teacher-card teacher-placeholder fade-in fade-in-delay-1">
+              <img src="https://i.pravatar.cc/150?u=sd-teacher-2"
+                   alt="SD Teacher" class="teacher-photo" loading="lazy" width="100" height="100">
+              <span class="teacher-region">San Diego</span>
+              <h3 class="teacher-name">Coming Soon</h3>
+              <p class="teacher-bio">San Diego Zouk instructor — details coming soon.</p>
+            </article>
+          </div><!-- /teachers-sd -->
+
+        </div><!-- /teachers-grid -->
+      </div>
+    </section>
+
+    <!-- Wave -->
+    <div class="wave-divider" aria-hidden="true" style="background:#131326;">
+      <svg viewBox="0 0 1440 64" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <path d="M0 64 Q360 0 720 32 Q1080 64 1440 0 L1440 64 Z" fill="#0d0d1a"/>
+      </svg>
+    </div>
+
+    <!-- =====================================================
+         ORGANIZERS
+    ===================================================== -->
+    <section id="organizers" aria-label="Organizers and DJs">
+      <div class="container">
+        <div class="section-heading fade-in">
+          <h2>Organizers <span class="gold-accent">&amp; DJs</span></h2>
+          <p class="subtitle">The people making SoCal Zouk happen</p>
+        </div>
+
+        <!-- TODO: Add more organizers -->
+        <div class="organizers-grid">
+
+          <article class="organizer-card fade-in">
+            <!-- TODO: Replace with real photo -->
+            <img src="https://i.pravatar.cc/150?u=dmitriy-vi-org"
+                 alt="Dmitriy Vi" class="organizer-photo"
+                 loading="lazy" width="72" height="72">
+            <div class="organizer-info">
+              <p class="organizer-name">Dmitriy Vi</p>
+              <span class="organizer-role">Organizer &amp; DJ</span>
+              <p class="organizer-tagline">West Los Angeles</p>
+              <div class="social-links" style="justify-content:flex-start;">
+                <a href="https://www.instagram.com/nyamaste/"
+                   class="social-link" target="_blank" rel="noopener noreferrer"
+                   aria-label="Dmitriy Vi on Instagram">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="organizer-card fade-in fade-in-delay-1">
+            <!-- TODO: Replace with real photo -->
+            <img src="https://i.pravatar.cc/150?u=ly-le-org"
+                 alt="Ly Le" class="organizer-photo"
+                 loading="lazy" width="72" height="72">
+            <div class="organizer-info">
+              <p class="organizer-name">Ly Le</p>
+              <span class="organizer-role">Organizer</span>
+              <p class="organizer-tagline">Downtown Los Angeles</p>
+              <div class="social-links" style="justify-content:flex-start;">
+                <a href="https://www.instagram.com/broc.co.ly/"
+                   class="social-link" target="_blank" rel="noopener noreferrer"
+                   aria-label="Ly Le on Instagram">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </a>
+                <a href="https://www.instagram.com/zoukasa.ocla/"
+                   class="social-link" target="_blank" rel="noopener noreferrer"
+                   aria-label="Zoukasa OC/LA on Instagram">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="organizer-card fade-in fade-in-delay-2">
+            <!-- TODO: Replace with real photo -->
+            <img src="https://i.pravatar.cc/150?u=corina-post-org"
+                 alt="Corina Post" class="organizer-photo"
+                 loading="lazy" width="72" height="72">
+            <div class="organizer-info">
+              <p class="organizer-name">Corina Post</p>
+              <span class="organizer-role">Organizer</span>
+              <p class="organizer-tagline">Los Angeles</p>
+              <div class="social-links" style="justify-content:flex-start;">
+                <a href="https://www.instagram.com/cococonnects/"
+                   class="social-link" target="_blank" rel="noopener noreferrer"
+                   aria-label="Corina Post on Instagram">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Wave -->
+    <div class="wave-divider" aria-hidden="true" style="background:#0d0d1a;">
+      <svg viewBox="0 0 1440 64" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <path d="M0 0 Q360 64 720 32 Q1080 0 1440 64 L1440 0 Z" fill="#1a0f2e"/>
+      </svg>
+    </div>
+
+    <!-- =====================================================
+         JOIN US
+    ===================================================== -->
+    <section id="join" aria-label="Join the community">
+      <div class="join-content">
+        <h2 class="fade-in">Join the SoCal <span class="gold-accent">Zouk Community</span></h2>
+        <p class="join-message fade-in fade-in-delay-1">
+          "Whether you're lacing up your dance shoes for the first time or you're a seasoned
+          Zouk dancer, you belong here. Our community spans Los Angeles, Orange County, and
+          San Diego — united by music, movement, and connection. Come dance with us!"
+        </p>
+        <div class="join-cta-wrap fade-in fade-in-delay-2">
+          <a href="https://chat.whatsapp.com/HgPl6fK4h4zIjdHox06gbp?mode=gi_t"
+             class="btn btn-whatsapp"
+             target="_blank" rel="noopener noreferrer"
+             aria-label="Join our WhatsApp community group">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            Join Our WhatsApp Community
+          </a>
+          <p class="join-note">Free to join · All levels welcome · SoCal dancers only</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =====================================================
+       FOOTER
+  ===================================================== -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="#hero" class="nav-logo" aria-label="ZoukCal — back to top">Zouk<span>Cal</span></a>
+          <p class="footer-tagline">The heartbeat of Brazilian Zouk in Southern California</p>
+        </div>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <h4>Navigate</h4>
+          <ul>
+            <li><a href="#calendar">Classes &amp; Events</a></li>
+            <li><a href="#teachers">Teachers</a></li>
+            <li><a href="#organizers">Organizers &amp; DJs</a></li>
+            <li><a href="#join">Join Us</a></li>
+            <li>
+              <a href="https://chat.whatsapp.com/HgPl6fK4h4zIjdHox06gbp?mode=gi_t"
+                 target="_blank" rel="noopener noreferrer">Submit an Event</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Zouk Calendar California &nbsp;·&nbsp;
+          <a href="https://www.zoukcal.com" style="color:var(--color-gold)">www.zoukcal.com</a>
+        </p>
+        <p>Calendar events are community-submitted. Contact event organizers directly for details.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // =====================================================
+    // NAVBAR scroll style
+    // =====================================================
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 20);
+    }, { passive: true });
+
+    // =====================================================
+    // MOBILE MENU
+    // =====================================================
+    const hamburger   = document.getElementById('hamburger');
+    const mobileMenu  = document.getElementById('mobile-menu');
+
+    hamburger.addEventListener('click', () => {
+      const open = mobileMenu.classList.toggle('open');
+      hamburger.classList.toggle('open', open);
+      hamburger.setAttribute('aria-expanded', open);
+    });
+
+    function closeMobileMenu() {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    }
+
+    document.addEventListener('click', (e) => {
+      if (!navbar.contains(e.target) && !mobileMenu.contains(e.target)) closeMobileMenu();
+    });
+
+    // =====================================================
+    // CALENDAR TABS
+    // =====================================================
+    function switchCalTab(region) {
+      document.querySelectorAll('.tab-btn').forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+      });
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+
+      const btn   = document.getElementById('tab-' + region);
+      const panel = document.getElementById('panel-' + region);
+      if (btn)   { btn.classList.add('active');   btn.setAttribute('aria-selected', 'true'); }
+      if (panel) { panel.classList.add('active'); }
+    }
+
+    // =====================================================
+    // TEACHER REGION TABS
+    // =====================================================
+    function switchRegion(region) {
+      const regionBtns   = document.querySelectorAll('.region-btn');
+      const regionPanels = document.querySelectorAll('.region-panel');
+
+      regionBtns.forEach(b  => { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
+      regionPanels.forEach(p => p.classList.remove('active'));
+
+      const panel = document.getElementById('teachers-' + region);
+      if (panel) panel.classList.add('active');
+
+      // Match button by aria-controls
+      const matchBtn = [...regionBtns].find(b => b.getAttribute('aria-controls') === 'teachers-' + region);
+      if (matchBtn) { matchBtn.classList.add('active'); matchBtn.setAttribute('aria-selected', 'true'); }
+    }
+
+    // =====================================================
+    // SCROLL FADE-IN (IntersectionObserver)
+    // =====================================================
+    const fadeEls = document.querySelectorAll('.fade-in');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    fadeEls.forEach(el => io.observe(el));
+
+    // =====================================================
+    // HERO CANVAS — animated waves + particles
+    // =====================================================
+    (function() {
+      const canvas = document.getElementById('hero-canvas');
+      const ctx    = canvas.getContext('2d');
+
+      function resize() {
+        canvas.width  = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
+      }
+      resize();
+      window.addEventListener('resize', resize, { passive: true });
+
+      const PARTICLE_COUNT = 55;
+      const particles = Array.from({ length: PARTICLE_COUNT }, () => ({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 1.4 + 0.3,
+        vx: (Math.random() - 0.5) * 0.28,
+        vy: (Math.random() - 0.5) * 0.28,
+        alpha: Math.random() * 0.45 + 0.1,
+      }));
+
+      const waves = [
+        { amp: 18, freq: 0.008, phase: 0,   speed: 0.008, color: 'rgba(201,168,76,0.07)'  },
+        { amp: 12, freq: 0.012, phase: 1.6, speed: 0.011, color: 'rgba(232,160,180,0.05)' },
+        { amp: 24, freq: 0.006, phase: 3.1, speed: 0.005, color: 'rgba(100,80,200,0.06)'  },
+      ];
+
+      let frame = 0;
+      function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        waves.forEach(w => {
+          ctx.beginPath();
+          ctx.moveTo(0, canvas.height / 2);
+          for (let x = 0; x <= canvas.width; x += 3) {
+            const y = canvas.height / 2
+              + Math.sin(x * w.freq + w.phase + frame * w.speed) * w.amp
+              + Math.sin(x * w.freq * 1.8 + w.phase * 0.5 + frame * w.speed * 0.6) * (w.amp * 0.4);
+            ctx.lineTo(x, y);
+          }
+          ctx.strokeStyle = w.color;
+          ctx.lineWidth   = 1.5;
+          ctx.stroke();
+        });
+
+        particles.forEach(p => {
+          p.x += p.vx; p.y += p.vy;
+          if (p.x < 0)            p.x = canvas.width;
+          if (p.x > canvas.width) p.x = 0;
+          if (p.y < 0)             p.y = canvas.height;
+          if (p.y > canvas.height) p.y = 0;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(201,168,76,${p.alpha})`;
+          ctx.fill();
+        });
+
+        frame++;
+        requestAnimationFrame(draw);
+      }
+
+      draw();
+    })();
+  </script>
+
+</body>
+</html>
