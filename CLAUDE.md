@@ -93,48 +93,71 @@ Also display a note: *"Want your event listed? Submit to our community calendar 
 
 **Heading:** "Meet the Teachers"
 
-**Sub-tabs or grouped sections by region:** Los Angeles | Orange County | San Diego
+**Authoritative data source:** `teachers.list`
+
+**Grouped by region** with tab switcher: Los Angeles | Orange County | San Diego
 
 Display teacher cards in a responsive CSS grid (3 cols desktop, 2 tablet, 1 mobile). Each card has:
-- Circular photo (use placeholder images from `https://i.pravatar.cc/150?u=[name]` as stand-ins with a note that real photos should be swapped in)
+- Circular profile photo from `images/<slug>.jpg` (downloaded from Instagram)
 - Teacher name (bold)
 - Region tag badge (e.g., "Los Angeles")
-- Short 2–3 sentence bio
-- Social/web links as icon buttons (Instagram, Facebook, website)
+- Short bio
+- Social/web links as icon buttons (Instagram, website globe icon)
 
-Populate with these placeholder teachers (clearly comment that real bios/photos should be filled in):
+**Region mapping for new entries (city → region tab):**
+- West LA, Burbank, Downtown LA, Torrance → **Los Angeles**
+- Buena Park, Costa Mesa → **Orange County**
+- San Diego → **San Diego**
 
-**Los Angeles:**
-- Dmitriy (nyamaste) — Zouk instructor and community organizer known for his musicality and flow-focused teaching style. Instagram: `@nyamaste`
-- Ly — Energetic teacher with a background in multiple partner dances. Instagram: `@broc.co.ly`
+**Current teachers (from `teachers.list`):**
 
-**Orange County:**
-- [Placeholder OC Teacher 1] — Add real teacher name and bio here.
-- [Placeholder OC Teacher 2] — Add real teacher name and bio here.
+*Los Angeles:* Aneska Franca (@aneskafranca, aneskadance.com), Adam J Craig (@adamjcraig), Stephanie Tong (@stonganie), Myla Ostroshenko (@mylaosa), Nathalia Carbajal (@nathy.carbajal), Viktor Tiz (@dj_viktorr_tiz)
 
-**San Diego:**
-- [Placeholder SD Teacher 1] — Add real teacher name and bio here.
-- [Placeholder SD Teacher 2] — Add real teacher name and bio here.
+*Orange County:* Christina Montoya (@christinazouk, zoukoc.com), Brayden Schmidt (@braydenzouk, zoukoc.com), Sarah Miles (@sarahzouk, zoukoc.com), Marissa A Rivera (@marissa.a.rivera / @dancewithmares / @zoukvibes)
 
-Use `<!-- TODO: Replace placeholder teachers with real data -->` comments throughout.
+*San Diego:* Richele Marie (@richele_marie, solzouk.com), Walter Fernandes (@walterfernandes___), Larissa Secco (@larissasecco)
+
+**Image slug convention:** lowercase name with hyphens (e.g., `aneska-franca.jpg`). Download using `download_photos.py` when adding new teachers.
 
 ---
 
-### 6. Organizers & DJs Section
+### 6. Organizers Section
 
-**Heading:** "Organizers & DJs"
+**Heading:** "Organizers"
 
-A horizontal scroll or responsive grid of organizer profile cards (slightly smaller than teacher cards). Each card shows:
-- Avatar/photo (placeholder)
+**Authoritative data source:** `organizers.list`
+
+**Grouped by region** (same LA / OC / SD mapping as Teachers section). A responsive grid of profile cards. Each card shows:
+- Profile photo from `images/<slug>.jpg`
 - Name
-- Role badge (Organizer / DJ / Both)
-- Short one-liner
-- Social link
+- Role badge: "Organizer"
+- Location one-liner
+- Social links (Instagram, website if available)
 
-Populate with:
-- **Dmitriy (nyamaste)** — Organizer & DJ · *"Bringing the Zouk vibes to SoCal since day one."* · Instagram: `@nyamaste`
-- **Ly (broc.co.ly)** — Organizer · *"Growing the San Diego Zouk scene with love."* · Instagram: `@broc.co.ly`
-- Additional placeholder cards with `<!-- TODO: Add more organizers -->` comment
+**Current organizers (from `organizers.list`):**
+- Dmitriy Vi (@nyamaste) — West Los Angeles
+- Ly Le (@broc.co.ly, @zoukasa.ocla) — Downtown Los Angeles
+- Corina Post (@cococonnects) — Los Angeles
+
+---
+
+### 6b. DJs Section
+
+**Heading:** "DJs"
+
+**Authoritative data source:** `djs.list`
+
+**Not grouped by region** — display all DJs in a single flat grid (same card style as Organizers). Each card shows:
+- Profile photo from `images/<slug>.jpg`
+- Name
+- Role badge: "DJ"
+- Location one-liner
+- Social links (Instagram, website if available)
+
+**Current DJs (from `djs.list`):**
+- Matt Laney (@amastrus_music) — Los Angeles
+- Orlan Mat (@djcal_z) — Los Angeles
+- Dhruv Puri (@dhroovvy) — San Diego
 
 ---
 
@@ -187,6 +210,29 @@ Populate with:
 7. **Test mobile responsiveness** at 375px, 768px, 1024px, 1440px breakpoints
 8. **Validate HTML** is semantic and accessible before finalizing
 9. Output the complete, ready-to-deploy `index.html` file
+
+## Updating People (Teachers / Organizers / DJs)
+
+When updating any of the three people sections, always read the corresponding `.list` file first:
+- `teachers.list` → Teachers section (region-grouped tabs: LA / OC / SD)
+- `organizers.list` → Organizers section (region-grouped)
+- `djs.list` → DJs section (no grouping, single flat grid)
+
+Each `.list` entry follows this format:
+```
+Full Name
+https://www.instagram.com/handle/   ← one or more social/web URLs
+Location: City Name
+```
+
+After adding new entries to `index.html`, download their Instagram profile photo using `download_photos.py` and save to `images/<slug>.jpg` (lowercase hyphenated name). Reference the image in the card's `<img src="images/<slug>.jpg">`.
+
+## Deployment
+
+Site deploys to [https://zoukcal-socal.surge.sh](https://zoukcal-socal.surge.sh) via:
+```
+surge . zoukcal-socal.surge.sh
+```
 
 ---
 
