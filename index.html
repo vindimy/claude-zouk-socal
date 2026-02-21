@@ -786,19 +786,25 @@
     .ig-post-overlay {
       position: absolute;
       inset: 0;
-      background: rgba(13,13,26,0.65);
+      background: linear-gradient(to top, rgba(13,13,26,0.85) 0%, rgba(13,13,26,0.35) 55%, transparent 100%);
       display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      transition: opacity var(--transition);
-      font-size: 0.85rem;
-      color: var(--color-gold);
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
+      align-items: flex-end;
+      padding: 14px 12px;
+      transition: background var(--transition);
     }
-    .ig-post:hover .ig-post-overlay { opacity: 1; }
+    .ig-post:hover .ig-post-overlay {
+      background: linear-gradient(to top, rgba(13,13,26,0.95) 0%, rgba(13,13,26,0.55) 65%, rgba(13,13,26,0.15) 100%);
+    }
+    .ig-post-caption {
+      color: #fff;
+      font-size: 0.72rem;
+      line-height: 1.45;
+      margin: 0;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
 
     .ig-loading {
       grid-column: 1 / -1;
@@ -1877,10 +1883,15 @@
           // Proxy image through Worker to strip Instagram's CORP header
           var thumb    = rawThumb ? WORKER_URL + '/?imageurl=' + encodeURIComponent(rawThumb) : '';
           var label    = caption.slice(0, 80) || 'Instagram post';
+          var captionHtml = caption
+            ? caption.slice(0, 200).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+            : '';
           return '<a class="ig-post" href="https://www.instagram.com/p/' + node.shortcode + '/" ' +
                     'target="_blank" rel="noopener noreferrer" aria-label="' + label + '">' +
                    '<img src="' + thumb + '" alt="' + label + '" loading="lazy">' +
-                   '<div class="ig-post-overlay"><span>View on Instagram</span></div>' +
+                   '<div class="ig-post-overlay">' +
+                     (captionHtml ? '<p class="ig-post-caption">' + captionHtml + '</p>' : '') +
+                   '</div>' +
                  '</a>';
         }).join('');
       }
