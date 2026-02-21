@@ -1558,6 +1558,37 @@
     }
 
     // =====================================================
+    // GEOLOCATION — auto-select region tabs
+    // =====================================================
+    (function autoSelectRegion() {
+      if (!navigator.geolocation) return;
+      navigator.geolocation.getCurrentPosition(function(pos) {
+        const lat = pos.coords.latitude;
+        const lng = pos.coords.longitude;
+
+        // Determine region from coords
+        // SD county: south of ~33.5°N
+        // OC: roughly lat < 34.0 and east of -118.15°W
+        // LA: everything else
+        let teacherRegion, calRegion;
+        if (lat < 33.5) {
+          teacherRegion = 'sd';
+          calRegion     = 'sd';
+        } else if (lat < 34.0 && lng > -118.15) {
+          teacherRegion = 'oc';
+          calRegion     = 'laoc';
+        } else {
+          teacherRegion = 'la';
+          calRegion     = 'laoc';
+        }
+
+        switchCalTab(calRegion);
+        switchRegion(teacherRegion);
+      }, function() { /* permission denied or unavailable — keep defaults */ },
+      { timeout: 5000, maximumAge: 300000 });
+    })();
+
+    // =====================================================
     // SCROLL FADE-IN (IntersectionObserver)
     // =====================================================
     const fadeEls = document.querySelectorAll('.fade-in');
