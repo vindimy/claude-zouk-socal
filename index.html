@@ -1852,15 +1852,16 @@
         }).join('');
       }
 
+      // Cloudflare Worker proxy — see worker/index.js
+      var WORKER_URL = 'https://zoukcal-ig-proxy.cloudfare-521.workers.dev';
+
       function fetchPosts(username) {
         if (cache[username]) { renderPosts(cache[username], username); return; }
         grid.innerHTML = '<p class="ig-loading">Loading latest posts…</p>';
-        var apiUrl   = 'https://www.instagram.com/api/v1/users/web_profile_info/?username=' + username;
-        var proxyUrl = 'https://api.allorigins.win/get?url=' + encodeURIComponent(apiUrl);
-        fetch(proxyUrl)
+        fetch(WORKER_URL + '/?username=' + encodeURIComponent(username))
           .then(function(r) { return r.json(); })
           .then(function(data) {
-            var edges = JSON.parse(data.contents).data.user.edge_owner_to_timeline_media.edges;
+            var edges = data.data.user.edge_owner_to_timeline_media.edges;
             cache[username] = edges;
             if (username === active) renderPosts(edges, username);
           })
