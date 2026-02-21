@@ -751,7 +751,77 @@
       .organizers-grid  { grid-template-columns: 1fr; }
       .hero-ctas        { flex-direction: column; align-items: center; }
       .tabs             { flex-direction: column; align-items: center; }
+      .ig-posts-grid    { grid-template-columns: 1fr; }
     }
+
+    /* =====================================================
+       LATEST POSTS (Instagram)
+    ===================================================== */
+    #latest-posts { background: var(--color-base); }
+
+    .ig-posts-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-md);
+      margin-top: var(--space-lg);
+    }
+
+    .ig-post {
+      position: relative;
+      display: block;
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 1 / 1;
+      background: var(--color-base-light);
+      text-decoration: none;
+    }
+    .ig-post img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+      display: block;
+    }
+    .ig-post:hover img { transform: scale(1.05); }
+
+    .ig-post-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(13,13,26,0.65);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity var(--transition);
+      font-size: 0.85rem;
+      color: var(--color-gold);
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .ig-post:hover .ig-post-overlay { opacity: 1; }
+
+    .ig-loading {
+      grid-column: 1 / -1;
+      text-align: center;
+      color: var(--color-text-muted);
+      padding: var(--space-xl) 0;
+      font-style: italic;
+    }
+    .ig-fallback {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: var(--space-xl) 0;
+    }
+    .ig-follow {
+      display: block;
+      text-align: center;
+      margin-top: var(--space-lg);
+      color: var(--color-gold);
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: opacity var(--transition);
+    }
+    .ig-follow:hover { opacity: 0.75; }
   </style>
 </head>
 <body>
@@ -765,6 +835,7 @@
 
       <ul class="nav-links" role="list">
         <li><a href="#calendar">Classes &amp; Events</a></li>
+        <li><a href="#latest-posts">Latest Posts</a></li>
         <li><a href="#teachers">Teachers</a></li>
         <li><a href="#organizers">Organizers</a></li>
         <li><a href="#djs">DJs</a></li>
@@ -789,8 +860,9 @@
 
   <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
-    <a href="#calendar"   onclick="closeMobileMenu()">Classes &amp; Events</a>
-    <a href="#teachers"   onclick="closeMobileMenu()">Teachers</a>
+    <a href="#calendar"      onclick="closeMobileMenu()">Classes &amp; Events</a>
+    <a href="#latest-posts" onclick="closeMobileMenu()">Latest Posts</a>
+    <a href="#teachers"     onclick="closeMobileMenu()">Teachers</a>
     <a href="#organizers" onclick="closeMobileMenu()">Organizers</a>
     <a href="#djs"        onclick="closeMobileMenu()">DJs</a>
     <a href="#join"       onclick="closeMobileMenu()">Join Us</a>
@@ -949,6 +1021,26 @@
           </div>
         </div>
 
+      </div>
+    </section>
+
+    <!-- =====================================================
+         LATEST POSTS
+    ===================================================== -->
+    <section id="latest-posts" aria-label="Latest Instagram Posts">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="fade-in">Latest <span class="gold-accent">Posts</span></h2>
+          <p class="section-subtitle fade-in fade-in-delay-1">From our community on Instagram</p>
+        </div>
+        <div id="ig-posts-grid" class="ig-posts-grid" aria-live="polite">
+          <!-- loaded on scroll -->
+        </div>
+        <a href="https://www.instagram.com/zoukasa.ocla/"
+           class="ig-follow fade-in"
+           target="_blank" rel="noopener noreferrer">
+          Follow @zoukasa.ocla on Instagram &rarr;
+        </a>
       </div>
     </section>
 
@@ -1686,6 +1778,74 @@
       }
 
       draw();
+    })();
+
+    // =====================================================
+    // LATEST INSTAGRAM POSTS — lazy load on scroll / nav click
+    // Tries Instagram internal API via CORS proxy; falls back
+    // to a direct profile link if the fetch fails.
+    // =====================================================
+    (function() {
+      const section  = document.getElementById('latest-posts');
+      const grid     = document.getElementById('ig-posts-grid');
+      const username = 'zoukasa.ocla';
+      let loaded = false;
+
+      function showFallback() {
+        grid.innerHTML =
+          '<div class="ig-fallback">' +
+            '<a href="https://www.instagram.com/' + username + '/" ' +
+               'class="btn btn-outline" target="_blank" rel="noopener noreferrer">' +
+              'View @' + username + ' on Instagram' +
+            '</a>' +
+          '</div>';
+      }
+
+      function renderPosts(edges) {
+        if (!edges || !edges.length) { showFallback(); return; }
+        grid.innerHTML = edges.slice(0, 3).map(function(e) {
+          var node    = e.node;
+          var caption = (node.edge_media_to_caption &&
+                         node.edge_media_to_caption.edges[0] &&
+                         node.edge_media_to_caption.edges[0].node.text) || '';
+          var thumb   = node.thumbnail_src || node.display_url || '';
+          var label   = caption.slice(0, 80) || 'Instagram post';
+          return '<a class="ig-post" href="https://www.instagram.com/p/' + node.shortcode + '/" ' +
+                    'target="_blank" rel="noopener noreferrer" aria-label="' + label + '">' +
+                   '<img src="' + thumb + '" alt="' + label + '" loading="lazy">' +
+                   '<div class="ig-post-overlay"><span>View on Instagram</span></div>' +
+                 '</a>';
+        }).join('');
+      }
+
+      function fetchPosts() {
+        if (loaded) return;
+        loaded = true;
+        grid.innerHTML = '<p class="ig-loading">Loading latest posts…</p>';
+
+        var apiUrl   = 'https://www.instagram.com/api/v1/users/web_profile_info/?username=' + username;
+        var proxyUrl = 'https://api.allorigins.win/get?url=' + encodeURIComponent(apiUrl);
+
+        fetch(proxyUrl)
+          .then(function(r) { return r.json(); })
+          .then(function(data) {
+            var d     = JSON.parse(data.contents);
+            var edges = d.data.user.edge_owner_to_timeline_media.edges;
+            renderPosts(edges);
+          })
+          .catch(showFallback);
+      }
+
+      // Trigger on scroll into view
+      var obs = new IntersectionObserver(function(entries) {
+        if (entries[0].isIntersecting) { fetchPosts(); obs.disconnect(); }
+      }, { threshold: 0.15 });
+      obs.observe(section);
+
+      // Also trigger immediately when any nav link to this section is clicked
+      document.querySelectorAll('a[href="#latest-posts"]').forEach(function(a) {
+        a.addEventListener('click', fetchPosts);
+      });
     })();
   </script>
 
