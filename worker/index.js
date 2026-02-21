@@ -1,12 +1,15 @@
 /**
- * Cloudflare Worker — Instagram post proxy for zoukcal-socal.surge.sh
+ * Cloudflare Worker — Instagram proxy for zoukcal-socal.surge.sh
  *
- * Fetches the latest posts from a public Instagram account using the
- * Instagram mobile API (requires Android user-agent, which browsers
- * cannot set directly). Returns CORS-enabled JSON to the website.
+ * Two endpoints:
+ *   GET /?username=<handle>   — fetch latest posts (JSON)
+ *   GET /?imageurl=<url>      — proxy CDN image, stripping CORP header
  *
- * Deploy: wrangler deploy
- * Endpoint: GET /?username=<handle>
+ * Instagram's CDN sends `Cross-Origin-Resource-Policy: same-origin`,
+ * which blocks <img> tags on external domains. This proxy re-serves
+ * the image without that header so browsers can display it.
+ *
+ * Deploy: npx wrangler deploy  (from worker/ directory)
  */
 
 const IG_UA =
@@ -16,22 +19,42 @@ const IG_UA =
 const CORS_HEADERS = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Methods': 'GET, OPTIONS',
-  'Content-Type': 'application/json',
 };
 
 export default {
   async fetch(request) {
-    // Handle CORS preflight
     if (request.method === 'OPTIONS') {
       return new Response(null, { status: 204, headers: CORS_HEADERS });
     }
 
     const url      = new URL(request.url);
     const username = url.searchParams.get('username');
+    const imageUrl = url.searchParams.get('imageurl');
+
+    // ── Image proxy ──────────────────────────────────────────────────
+    if (imageUrl) {
+      let imgRes;
+      try {
+        imgRes = await fetch(imageUrl, { headers: { 'User-Agent': IG_UA } });
+      } catch {
+        return new Response('upstream fetch failed', { status: 502 });
+      }
+
+      // Forward the image but override the blocking CORP header
+      const headers = new Headers(imgRes.headers);
+      headers.set('Cross-Origin-Resource-Policy', 'cross-origin');
+      headers.set('Access-Control-Allow-Origin', '*');
+      headers.set('Cache-Control', 'public, max-age=86400'); // cache 24h
+
+      return new Response(imgRes.body, { status: imgRes.status, headers });
+    }
+
+    // ── Post data ─────────────────────────────────────────────────────
     if (!username) {
-      return new Response(JSON.stringify({ error: 'missing username' }), {
-        status: 400, headers: CORS_HEADERS,
-      });
+      return new Response(
+        JSON.stringify({ error: 'missing username or imageurl param' }),
+        { status: 400, headers: { ...CORS_HEADERS, 'Content-Type': 'application/json' } }
+      );
     }
 
     const igUrl =
@@ -47,16 +70,17 @@ export default {
           'Accept-Language': 'en-US',
         },
       });
-    } catch (err) {
-      return new Response(JSON.stringify({ error: 'upstream fetch failed' }), {
-        status: 502, headers: CORS_HEADERS,
-      });
+    } catch {
+      return new Response(
+        JSON.stringify({ error: 'upstream fetch failed' }),
+        { status: 502, headers: { ...CORS_HEADERS, 'Content-Type': 'application/json' } }
+      );
     }
 
     if (!igRes.ok) {
       return new Response(
         JSON.stringify({ error: 'instagram returned ' + igRes.status }),
-        { status: igRes.status, headers: CORS_HEADERS }
+        { status: igRes.status, headers: { ...CORS_HEADERS, 'Content-Type': 'application/json' } }
       );
     }
 
@@ -65,6 +89,7 @@ export default {
       status: 200,
       headers: {
         ...CORS_HEADERS,
+        'Content-Type':  'application/json',
         'Cache-Control': 'public, max-age=900', // cache 15 min at edge
       },
     });

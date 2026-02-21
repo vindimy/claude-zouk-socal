@@ -1842,8 +1842,10 @@
           var caption = (node.edge_media_to_caption &&
                          node.edge_media_to_caption.edges[0] &&
                          node.edge_media_to_caption.edges[0].node.text) || '';
-          var thumb   = node.thumbnail_src || node.display_url || '';
-          var label   = caption.slice(0, 80) || 'Instagram post';
+          var rawThumb = node.thumbnail_src || node.display_url || '';
+          // Proxy image through Worker to strip Instagram's CORP header
+          var thumb    = rawThumb ? WORKER_URL + '/?imageurl=' + encodeURIComponent(rawThumb) : '';
+          var label    = caption.slice(0, 80) || 'Instagram post';
           return '<a class="ig-post" href="https://www.instagram.com/p/' + node.shortcode + '/" ' +
                     'target="_blank" rel="noopener noreferrer" aria-label="' + label + '">' +
                    '<img src="' + thumb + '" alt="' + label + '" loading="lazy">' +
