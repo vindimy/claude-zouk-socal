@@ -1559,33 +1559,41 @@
 
     // =====================================================
     // GEOLOCATION — auto-select region tabs
+    // Primary: browser GPS. Fallback: IP-based via ipapi.co
     // =====================================================
     (function autoSelectRegion() {
-      if (!navigator.geolocation) return;
-      navigator.geolocation.getCurrentPosition(function(pos) {
-        const lat = pos.coords.latitude;
-        const lng = pos.coords.longitude;
-
-        // Determine region from coords
-        // SD county: south of ~33.5°N
-        // OC: roughly lat < 34.0 and east of -118.15°W
-        // LA: everything else
+      // SD county: south of ~33.5°N
+      // OC: lat < 34.0 and east of -118.15°W
+      // LA: everything else
+      function applyCoords(lat, lng) {
         let teacherRegion, calRegion;
         if (lat < 33.5) {
-          teacherRegion = 'sd';
-          calRegion     = 'sd';
+          teacherRegion = 'sd';  calRegion = 'sd';
         } else if (lat < 34.0 && lng > -118.15) {
-          teacherRegion = 'oc';
-          calRegion     = 'laoc';
+          teacherRegion = 'oc';  calRegion = 'laoc';
         } else {
-          teacherRegion = 'la';
-          calRegion     = 'laoc';
+          teacherRegion = 'la';  calRegion = 'laoc';
         }
-
         switchCalTab(calRegion);
         switchRegion(teacherRegion);
-      }, function() { /* permission denied or unavailable — keep defaults */ },
-      { timeout: 5000, maximumAge: 300000 });
+      }
+
+      function fallbackIP() {
+        fetch('https://ipapi.co/json/')
+          .then(function(r) { return r.json(); })
+          .then(function(d) {
+            if (d.latitude && d.longitude) applyCoords(d.latitude, d.longitude);
+          })
+          .catch(function() { /* silently keep defaults */ });
+      }
+
+      if (!navigator.geolocation) { fallbackIP(); return; }
+
+      navigator.geolocation.getCurrentPosition(
+        function(pos) { applyCoords(pos.coords.latitude, pos.coords.longitude); },
+        fallbackIP,
+        { timeout: 5000, maximumAge: 300000 }
+      );
     })();
 
     // =====================================================
