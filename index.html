@@ -822,6 +822,26 @@
       transition: opacity var(--transition);
     }
     .ig-follow:hover { opacity: 0.75; }
+
+    .ig-account-tabs {
+      display: flex;
+      gap: var(--space-sm);
+      flex-wrap: wrap;
+      margin-top: var(--space-lg);
+    }
+    .ig-account-btn {
+      padding: 8px 20px;
+      border-radius: 999px;
+      border: 1px solid var(--color-border);
+      background: transparent;
+      color: var(--color-text-muted);
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+    .ig-account-btn:hover  { border-color: var(--color-gold); color: var(--color-gold); }
+    .ig-account-btn.active { background: var(--color-gold); border-color: var(--color-gold); color: var(--color-base); font-weight: 600; }
   </style>
 </head>
 <body>
@@ -1033,13 +1053,24 @@
           <h2 class="fade-in">Latest <span class="gold-accent">Posts</span></h2>
           <p class="section-subtitle fade-in fade-in-delay-1">From our community on Instagram</p>
         </div>
+        <div class="ig-account-tabs fade-in fade-in-delay-1" role="tablist" aria-label="Instagram account">
+          <button class="ig-account-btn active"
+                  id="ig-tab-socalzoukcalendar"
+                  role="tab" aria-selected="true" aria-controls="ig-posts-grid"
+                  onclick="switchIgAccount('socalzoukcalendar')">@socalzoukcalendar</button>
+          <button class="ig-account-btn"
+                  id="ig-tab-zoukasa-ocla"
+                  role="tab" aria-selected="false" aria-controls="ig-posts-grid"
+                  onclick="switchIgAccount('zoukasa.ocla')">@zoukasa.ocla</button>
+        </div>
         <div id="ig-posts-grid" class="ig-posts-grid" aria-live="polite">
           <!-- loaded on scroll -->
         </div>
-        <a href="https://www.instagram.com/zoukasa.ocla/"
+        <a id="ig-follow-link"
+           href="https://www.instagram.com/socalzoukcalendar/"
            class="ig-follow fade-in"
            target="_blank" rel="noopener noreferrer">
-          Follow @zoukasa.ocla on Instagram &rarr;
+          Follow @socalzoukcalendar on Instagram &rarr;
         </a>
       </div>
     </section>
@@ -1782,16 +1813,19 @@
 
     // =====================================================
     // LATEST INSTAGRAM POSTS — lazy load on scroll / nav click
+    // Supports multiple accounts with per-account caching.
     // Tries Instagram internal API via CORS proxy; falls back
     // to a direct profile link if the fetch fails.
     // =====================================================
     (function() {
-      const section  = document.getElementById('latest-posts');
-      const grid     = document.getElementById('ig-posts-grid');
-      const username = 'zoukasa.ocla';
-      let loaded = false;
+      var section    = document.getElementById('latest-posts');
+      var grid       = document.getElementById('ig-posts-grid');
+      var followLink = document.getElementById('ig-follow-link');
+      var cache      = {};          // edges keyed by username
+      var active     = 'socalzoukcalendar';
+      var visible    = false;       // true once section scrolled into view
 
-      function showFallback() {
+      function showFallback(username) {
         grid.innerHTML =
           '<div class="ig-fallback">' +
             '<a href="https://www.instagram.com/' + username + '/" ' +
@@ -1801,8 +1835,8 @@
           '</div>';
       }
 
-      function renderPosts(edges) {
-        if (!edges || !edges.length) { showFallback(); return; }
+      function renderPosts(edges, username) {
+        if (!edges || !edges.length) { showFallback(username); return; }
         grid.innerHTML = edges.slice(0, 3).map(function(e) {
           var node    = e.node;
           var caption = (node.edge_media_to_caption &&
@@ -1818,33 +1852,56 @@
         }).join('');
       }
 
-      function fetchPosts() {
-        if (loaded) return;
-        loaded = true;
+      function fetchPosts(username) {
+        if (cache[username]) { renderPosts(cache[username], username); return; }
         grid.innerHTML = '<p class="ig-loading">Loading latest posts…</p>';
-
         var apiUrl   = 'https://www.instagram.com/api/v1/users/web_profile_info/?username=' + username;
         var proxyUrl = 'https://api.allorigins.win/get?url=' + encodeURIComponent(apiUrl);
-
         fetch(proxyUrl)
           .then(function(r) { return r.json(); })
           .then(function(data) {
-            var d     = JSON.parse(data.contents);
-            var edges = d.data.user.edge_owner_to_timeline_media.edges;
-            renderPosts(edges);
+            var edges = JSON.parse(data.contents).data.user.edge_owner_to_timeline_media.edges;
+            cache[username] = edges;
+            if (username === active) renderPosts(edges, username);
           })
-          .catch(showFallback);
+          .catch(function() { if (username === active) showFallback(username); });
+      }
+
+      // Called by tab buttons (exposed globally)
+      window.switchIgAccount = function(username) {
+        if (username === active) return;
+        active = username;
+
+        // Update tab button states
+        var tabId = 'ig-tab-' + username.replace(/\./g, '-');
+        document.querySelectorAll('.ig-account-btn').forEach(function(btn) {
+          var on = btn.id === tabId;
+          btn.classList.toggle('active', on);
+          btn.setAttribute('aria-selected', on ? 'true' : 'false');
+        });
+
+        // Update follow link
+        followLink.href      = 'https://www.instagram.com/' + username + '/';
+        followLink.innerHTML = 'Follow @' + username + ' on Instagram &rarr;';
+
+        if (visible) fetchPosts(username);
+      };
+
+      function initLoad() {
+        if (visible) return;
+        visible = true;
+        fetchPosts(active);
       }
 
       // Trigger on scroll into view
       var obs = new IntersectionObserver(function(entries) {
-        if (entries[0].isIntersecting) { fetchPosts(); obs.disconnect(); }
+        if (entries[0].isIntersecting) { initLoad(); obs.disconnect(); }
       }, { threshold: 0.15 });
       obs.observe(section);
 
       // Also trigger immediately when any nav link to this section is clicked
       document.querySelectorAll('a[href="#latest-posts"]').forEach(function(a) {
-        a.addEventListener('click', fetchPosts);
+        a.addEventListener('click', initLoad);
       });
     })();
   </script>
