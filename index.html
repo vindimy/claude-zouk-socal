@@ -1559,7 +1559,7 @@
 
     // =====================================================
     // GEOLOCATION — auto-select region tabs
-    // Primary: browser GPS. Fallback: IP-based via ipapi.co
+    // Primary: IP-based via ipapi.co. Fallback: browser GPS
     // =====================================================
     (function autoSelectRegion() {
       // SD county: south of ~33.5°N
@@ -1578,22 +1578,22 @@
         switchRegion(teacherRegion);
       }
 
-      function fallbackIP() {
-        fetch('https://ipapi.co/json/')
-          .then(function(r) { return r.json(); })
-          .then(function(d) {
-            if (d.latitude && d.longitude) applyCoords(d.latitude, d.longitude);
-          })
-          .catch(function() { /* silently keep defaults */ });
+      function fallbackGPS() {
+        if (!navigator.geolocation) return;
+        navigator.geolocation.getCurrentPosition(
+          function(pos) { applyCoords(pos.coords.latitude, pos.coords.longitude); },
+          function() { /* silently keep defaults */ },
+          { timeout: 5000, maximumAge: 300000 }
+        );
       }
 
-      if (!navigator.geolocation) { fallbackIP(); return; }
-
-      navigator.geolocation.getCurrentPosition(
-        function(pos) { applyCoords(pos.coords.latitude, pos.coords.longitude); },
-        fallbackIP,
-        { timeout: 5000, maximumAge: 300000 }
-      );
+      fetch('https://ipapi.co/json/')
+        .then(function(r) { return r.json(); })
+        .then(function(d) {
+          if (d.latitude && d.longitude) applyCoords(d.latitude, d.longitude);
+          else fallbackGPS();
+        })
+        .catch(fallbackGPS);
     })();
 
     // =====================================================
