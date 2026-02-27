@@ -493,6 +493,27 @@
     .calendar-footer a    { font-size: 0.85rem; color: var(--color-gold); transition: color var(--transition); }
     .calendar-footer a:hover { color: var(--color-gold-light); }
 
+    .cal-view-toggle {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: var(--space-md);
+    }
+    .cal-view-btn {
+      background: var(--color-base-mid);
+      border: 1px solid var(--color-border);
+      color: var(--color-text-muted);
+      padding: 0.45rem 1.1rem;
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .cal-view-btn:first-child { border-radius: var(--radius-full) 0 0 var(--radius-full); border-right: none; }
+    .cal-view-btn:last-child  { border-radius: 0 var(--radius-full) var(--radius-full) 0; }
+    .cal-view-btn.active      { background: var(--color-gold); border-color: var(--color-gold); color: var(--color-base); font-weight: 600; }
+    .cal-view-btn:hover:not(.active) { border-color: var(--color-gold); color: var(--color-gold); }
+
     /* =====================================================
        TEACHERS
     ===================================================== */
@@ -1005,6 +1026,11 @@
                   onclick="switchCalTab('sd')">
             San Diego
           </button>
+        </div>
+
+        <div class="cal-view-toggle fade-in fade-in-delay-2" role="group" aria-label="Calendar view">
+          <button class="cal-view-btn" id="cal-view-agenda" onclick="setCalView('AGENDA')">Agenda</button>
+          <button class="cal-view-btn" id="cal-view-month"  onclick="setCalView('MONTH')">Month</button>
         </div>
 
         <div class="tab-panel active fade-in fade-in-delay-2"
@@ -1708,6 +1734,21 @@
       if (btn)   { btn.classList.add('active');   btn.setAttribute('aria-selected', 'true'); }
       if (panel) { panel.classList.add('active'); }
     }
+
+    // =====================================================
+    // CALENDAR VIEW TOGGLE (Agenda / Month)
+    // =====================================================
+    function setCalView(mode) {
+      document.getElementById('cal-view-agenda').classList.toggle('active', mode === 'AGENDA');
+      document.getElementById('cal-view-month').classList.toggle('active',  mode === 'MONTH');
+      var h = mode === 'MONTH' ? '720px' : '600px';
+      document.querySelectorAll('.calendar-card iframe').forEach(function(iframe) {
+        iframe.style.height = h;
+        iframe.src = iframe.src.replace(/mode=[A-Z]+/, 'mode=' + mode);
+      });
+    }
+    // Default: agenda on mobile, month on desktop
+    setCalView(window.innerWidth < 768 ? 'AGENDA' : 'MONTH');
 
     // =====================================================
     // TEACHER REGION TABS
