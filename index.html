@@ -791,103 +791,269 @@
       .organizers-grid  { grid-template-columns: 1fr; }
       .hero-ctas        { flex-direction: column; align-items: center; }
       .tabs             { flex-direction: column; align-items: center; }
-      .ig-posts-grid    { grid-template-columns: 1fr; }
     }
+
 
     /* =====================================================
-       LATEST POSTS (Instagram)
+       TEACHERS
     ===================================================== */
-    #latest-posts { background: var(--color-base); }
+    #teachers { background: var(--color-base-light); }
 
-    .ig-posts-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--space-md);
-      margin-top: var(--space-lg);
-    }
-
-    .ig-post {
-      position: relative;
-      display: block;
-      border-radius: 12px;
-      overflow: hidden;
-      aspect-ratio: 1 / 1;
-      background: var(--color-base-light);
-      text-decoration: none;
-    }
-    .ig-post img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      transition: transform 0.4s ease;
-      display: block;
-    }
-    .ig-post:hover img { transform: scale(1.05); }
-
-    .ig-post-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(13,13,26,0.85) 0%, rgba(13,13,26,0.35) 55%, transparent 100%);
+    .region-tabs {
       display: flex;
-      align-items: flex-end;
-      padding: 14px 12px;
-      transition: background var(--transition);
-    }
-    .ig-post:hover .ig-post-overlay {
-      background: linear-gradient(to top, rgba(13,13,26,0.95) 0%, rgba(13,13,26,0.55) 65%, rgba(13,13,26,0.15) 100%);
-    }
-    .ig-post-caption {
-      color: #fff;
-      font-size: 0.72rem;
-      line-height: 1.45;
-      margin: 0;
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-
-    .ig-loading {
-      grid-column: 1 / -1;
-      text-align: center;
-      color: var(--color-text-muted);
-      padding: var(--space-xl) 0;
-      font-style: italic;
-    }
-    .ig-fallback {
-      grid-column: 1 / -1;
-      text-align: center;
-      padding: var(--space-xl) 0;
-    }
-    .ig-follow {
-      display: block;
-      text-align: center;
-      margin-top: var(--space-lg);
-      color: var(--color-gold);
-      font-size: 0.9rem;
-      text-decoration: none;
-      transition: opacity var(--transition);
-    }
-    .ig-follow:hover { opacity: 0.75; }
-
-    .ig-account-tabs {
-      display: flex;
-      gap: var(--space-sm);
+      justify-content: center;
+      gap: var(--space-xs);
+      margin-bottom: var(--space-lg);
       flex-wrap: wrap;
-      margin-top: var(--space-lg);
     }
-    .ig-account-btn {
-      padding: 8px 20px;
-      border-radius: 999px;
-      border: 1px solid var(--color-border);
+
+    .region-btn {
       background: transparent;
+      border: 1px solid var(--color-border);
       color: var(--color-text-muted);
+      padding: 0.45rem 1.2rem;
+      border-radius: var(--radius-full);
       font-family: var(--font-body);
       font-size: 0.85rem;
       cursor: pointer;
-      transition: all var(--transition);
+      transition: var(--transition);
     }
-    .ig-account-btn:hover  { border-color: var(--color-gold); color: var(--color-gold); }
-    .ig-account-btn.active { background: var(--color-gold); border-color: var(--color-gold); color: var(--color-base); font-weight: 600; }
+    .region-btn:hover  { border-color: var(--color-rose); color: var(--color-rose); }
+    .region-btn.active { background: var(--color-rose-dim); border-color: var(--color-rose); color: var(--color-rose); }
+
+    .teachers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-md); }
+
+    .region-panel         { display: none; grid-column: 1 / -1; }
+    .region-panel.active  { display: contents; }
+
+    .teacher-card {
+      background: var(--color-base-mid);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: var(--space-lg) var(--space-md);
+      text-align: center;
+      transition: var(--transition);
+    }
+    .teacher-card:hover {
+      border-color: var(--color-rose);
+      box-shadow: 0 0 32px rgba(232, 160, 180, 0.12);
+      transform: translateY(-4px);
+    }
+
+    .teacher-photo {
+      width: 100px; height: 100px;
+      border-radius: 50%;
+      margin: 0 auto var(--space-sm);
+      object-fit: cover;
+      border: 3px solid var(--color-border);
+      transition: border-color var(--transition);
+    }
+    .teacher-card:hover .teacher-photo { border-color: var(--color-rose); }
+
+    .teacher-region {
+      display: inline-block;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-rose);
+      background: var(--color-rose-dim);
+      border: 1px solid rgba(232, 160, 180, 0.3);
+      padding: 0.2rem 0.75rem;
+      border-radius: var(--radius-full);
+      margin-bottom: var(--space-xs);
+    }
+
+    .teacher-name { font-family: var(--font-display); font-size: 1.45rem; margin-bottom: var(--space-xs); }
+    .teacher-bio  { font-size: 0.875rem; color: var(--color-text-muted); margin-bottom: var(--space-sm); line-height: 1.75; }
+
+    .teacher-placeholder { opacity: 0.45; }
+
+    /* =====================================================
+       ORGANIZERS
+    ===================================================== */
+    #organizers { background: var(--color-base); }
+
+    .organizers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: var(--space-md);
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .organizer-card {
+      background: var(--color-base-mid);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      transition: var(--transition);
+    }
+    .organizer-card:hover {
+      border-color: var(--color-gold);
+      box-shadow: var(--shadow-gold);
+      transform: translateY(-3px);
+    }
+
+    .organizer-photo {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 2px solid var(--color-border);
+    }
+
+    .organizer-info  { flex: 1; min-width: 0; }
+    .organizer-name  { font-family: var(--font-display); font-size: 1.2rem; margin-bottom: 4px; }
+
+    .organizer-role {
+      display: inline-block;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      background: var(--color-gold-dim);
+      border: 1px solid rgba(201, 168, 76, 0.3);
+      padding: 0.15rem 0.65rem;
+      border-radius: var(--radius-full);
+      margin-bottom: 6px;
+    }
+
+    .organizer-tagline { font-size: 0.82rem; color: var(--color-text-muted); font-style: italic; margin-bottom: 8px; }
+
+    /* =====================================================
+       SOCIAL LINK ICON BUTTONS (shared)
+    ===================================================== */
+    .social-links { display: flex; gap: var(--space-xs); justify-content: center; }
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: var(--color-base);
+      border: 1px solid var(--color-border);
+      color: var(--color-text-muted);
+      font-size: 0.85rem;
+      transition: var(--transition);
+    }
+    .social-link:hover {
+      border-color: var(--color-gold);
+      color: var(--color-gold);
+      background: var(--color-gold-dim);
+    }
+
+    /* =====================================================
+       JOIN US
+    ===================================================== */
+    #join {
+      position: relative;
+      background: linear-gradient(140deg, #1a0f2e 0%, #2a1a2e 50%, #1a1020 100%);
+      text-align: center;
+    }
+    #join::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 100%, rgba(201, 168, 76, 0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .join-content {
+      position: relative;
+      z-index: 1;
+      max-width: 660px;
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+    }
+    .join-content h2 { margin-bottom: var(--space-md); }
+
+    .join-message {
+      font-size: 1.1rem;
+      color: var(--color-text-dim);
+      line-height: 1.9;
+      margin-bottom: var(--space-lg);
+      font-style: italic;
+    }
+
+    .join-cta-wrap { display: flex; flex-direction: column; align-items: center; gap: var(--space-sm); }
+    .join-note     { font-size: 0.82rem; color: var(--color-text-muted); letter-spacing: 0.06em; }
+
+    /* =====================================================
+       FOOTER
+    ===================================================== */
+    footer {
+      background: #09090f;
+      border-top: 1px solid var(--color-border);
+      padding: var(--space-xl) 0 var(--space-lg);
+    }
+
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-xl);
+      margin-bottom: var(--space-xl);
+    }
+
+    .footer-brand .nav-logo { display: inline-block; margin-bottom: var(--space-sm); }
+    .footer-tagline         { font-size: 0.9rem; color: var(--color-text-muted); font-style: italic; }
+
+    .footer-nav h4 {
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      margin-bottom: var(--space-sm);
+      font-weight: 600;
+    }
+    .footer-nav ul   { display: flex; flex-direction: column; gap: 8px; }
+    .footer-nav a    { font-size: 0.9rem; color: var(--color-text-muted); transition: color var(--transition); }
+    .footer-nav a:hover { color: var(--color-gold); }
+
+    .footer-bottom {
+      border-top: 1px solid var(--color-border);
+      padding-top: var(--space-md);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+    }
+    .footer-bottom p { font-size: 0.8rem; color: var(--color-text-muted); line-height: 1.65; }
+    .footer-credits { width: 100%; border-top: 1px solid var(--color-border); padding-top: var(--space-sm); margin-top: var(--space-sm); text-align: center; }
+    .footer-credits a { color: var(--color-gold); transition: opacity var(--transition); }
+    .footer-credits a:hover { opacity: 0.75; }
+
+    /* =====================================================
+       RESPONSIVE
+    ===================================================== */
+    @media (max-width: 1024px) {
+      .teachers-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      :root { --space-2xl: 4rem; }
+
+      .nav-links, .nav-cta { display: none; }
+      .hamburger            { display: flex; }
+
+      .features-grid  { grid-template-columns: 1fr; max-width: 380px; }
+      .teachers-grid  { grid-template-columns: repeat(2, 1fr); }
+      .footer-inner   { grid-template-columns: 1fr; gap: var(--space-lg); }
+      .footer-bottom  { flex-direction: column; }
+    }
+
+    @media (max-width: 480px) {
+      .teachers-grid    { grid-template-columns: 1fr; }
+      .organizers-grid  { grid-template-columns: 1fr; }
+      .hero-ctas        { flex-direction: column; align-items: center; }
+      .tabs             { flex-direction: column; align-items: center; }
+    }
+
   </style>
 </head>
 <body>
@@ -901,7 +1067,6 @@
 
       <ul class="nav-links" role="list">
         <li><a href="#calendar">Classes &amp; Events</a></li>
-        <li><a href="#latest-posts">Latest Posts</a></li>
         <li><a href="#teachers">Teachers</a></li>
         <li><a href="#djs">DJs</a></li>
         <li><a href="#organizers">Organizers</a></li>
@@ -927,7 +1092,6 @@
   <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
     <a href="#calendar"      onclick="closeMobileMenu()">Classes &amp; Events</a>
-    <a href="#latest-posts" onclick="closeMobileMenu()">Latest Posts</a>
     <a href="#teachers"     onclick="closeMobileMenu()">Teachers</a>
     <a href="#djs"        onclick="closeMobileMenu()">DJs</a>
     <a href="#organizers" onclick="closeMobileMenu()">Organizers</a>
@@ -1097,53 +1261,6 @@
           </div>
         </div>
 
-      </div>
-    </section>
-
-    <!-- =====================================================
-         LATEST POSTS
-    ===================================================== -->
-    <section id="latest-posts" aria-label="Latest Instagram Posts">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="fade-in">Latest <span class="gold-accent">Posts</span></h2>
-          <p class="section-subtitle fade-in fade-in-delay-1">From our community on Instagram</p>
-        </div>
-        <div class="ig-account-tabs fade-in fade-in-delay-1" role="tablist" aria-label="Instagram account">
-          <button class="ig-account-btn active"
-                  id="ig-tab-socalzoukcalendar"
-                  role="tab" aria-selected="true" aria-controls="ig-posts-grid"
-                  onclick="switchIgAccount('socalzoukcalendar')">@socalzoukcalendar</button>
-          <button class="ig-account-btn"
-                  id="ig-tab-brazilianzoukoc"
-                  role="tab" aria-selected="false" aria-controls="ig-posts-grid"
-                  onclick="switchIgAccount('brazilianzoukoc')">@brazilianzoukoc</button>
-          <button class="ig-account-btn"
-                  id="ig-tab-calizouk"
-                  role="tab" aria-selected="false" aria-controls="ig-posts-grid"
-                  onclick="switchIgAccount('calizouk')">@calizouk</button>
-          <button class="ig-account-btn"
-                  id="ig-tab-sdzouk"
-                  role="tab" aria-selected="false" aria-controls="ig-posts-grid"
-                  onclick="switchIgAccount('sdzouk')">@sdzouk</button>
-          <button class="ig-account-btn"
-                  id="ig-tab-solzouk"
-                  role="tab" aria-selected="false" aria-controls="ig-posts-grid"
-                  onclick="switchIgAccount('solzouk')">@solzouk</button>
-          <button class="ig-account-btn"
-                  id="ig-tab-zoukasa-ocla"
-                  role="tab" aria-selected="false" aria-controls="ig-posts-grid"
-                  onclick="switchIgAccount('zoukasa.ocla')">@zoukasa.ocla</button>
-        </div>
-        <div id="ig-posts-grid" class="ig-posts-grid" aria-live="polite">
-          <!-- loaded on scroll -->
-        </div>
-        <a id="ig-follow-link"
-           href="https://www.instagram.com/socalzoukcalendar/"
-           class="ig-follow fade-in"
-           target="_blank" rel="noopener noreferrer">
-          Follow @socalzoukcalendar on Instagram &rarr;
-        </a>
       </div>
     </section>
 
@@ -1702,6 +1819,14 @@
         </p>
         <p>Calendar events are community-submitted. Contact event organizers directly for details.</p>
         <p class="footer-credits">
+          Follow us on Instagram:
+          <a href="https://www.instagram.com/socalzoukcalendar/" target="_blank" rel="noopener noreferrer">@socalzoukcalendar</a>
+          &nbsp;·&nbsp;
+          <a href="https://www.instagram.com/brazilianzoukoc/" target="_blank" rel="noopener noreferrer">@brazilianzoukoc</a>
+          &nbsp;·&nbsp;
+          <a href="https://www.instagram.com/zoukasa.ocla/" target="_blank" rel="noopener noreferrer">@zoukasa.ocla</a>
+        </p>
+        <p class="footer-credits">
           <a href="https://github.com/vindimy/claude-zouk-socal" target="_blank" rel="noopener noreferrer">Source code</a> by <a href="https://www.instagram.com/nyamaste/" target="_blank" rel="noopener noreferrer">Dmitriy Vi</a>
           &nbsp;·&nbsp;
           Hosting by <a href="https://www.instagram.com/amastrus_music/" target="_blank" rel="noopener noreferrer">Matt Laney</a>
@@ -1943,108 +2068,6 @@
       }
 
       draw();
-    })();
-
-    // =====================================================
-    // LATEST INSTAGRAM POSTS — lazy load on scroll / nav click
-    // Supports multiple accounts with per-account caching.
-    // Tries Instagram internal API via CORS proxy; falls back
-    // to a direct profile link if the fetch fails.
-    // =====================================================
-    (function() {
-      var section    = document.getElementById('latest-posts');
-      var grid       = document.getElementById('ig-posts-grid');
-      var followLink = document.getElementById('ig-follow-link');
-      var cache      = {};          // edges keyed by username
-      var active     = 'socalzoukcalendar';
-      var visible    = false;       // true once section scrolled into view
-
-      function showFallback(username) {
-        grid.innerHTML =
-          '<div class="ig-fallback">' +
-            '<a href="https://www.instagram.com/' + username + '/" ' +
-               'class="btn btn-outline" target="_blank" rel="noopener noreferrer">' +
-              'View @' + username + ' on Instagram' +
-            '</a>' +
-          '</div>';
-      }
-
-      function renderPosts(edges, username) {
-        if (!edges || !edges.length) { showFallback(username); return; }
-        grid.innerHTML = edges.slice(0, 3).map(function(e) {
-          var node    = e.node;
-          var caption = (node.edge_media_to_caption &&
-                         node.edge_media_to_caption.edges[0] &&
-                         node.edge_media_to_caption.edges[0].node.text) || '';
-          var rawThumb = node.thumbnail_src || node.display_url || '';
-          // Proxy image through Worker to strip Instagram's CORP header
-          var thumb    = rawThumb ? WORKER_URL + '/?imageurl=' + encodeURIComponent(rawThumb) : '';
-          var label    = caption.slice(0, 80) || 'Instagram post';
-          var captionHtml = caption
-            ? caption.slice(0, 200).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
-            : '';
-          return '<a class="ig-post" href="https://www.instagram.com/p/' + node.shortcode + '/" ' +
-                    'target="_blank" rel="noopener noreferrer" aria-label="' + label + '">' +
-                   '<img src="' + thumb + '" alt="' + label + '" loading="lazy">' +
-                   '<div class="ig-post-overlay">' +
-                     (captionHtml ? '<p class="ig-post-caption">' + captionHtml + '</p>' : '') +
-                   '</div>' +
-                 '</a>';
-        }).join('');
-      }
-
-      // Cloudflare Worker proxy — see worker/index.js
-      var WORKER_URL = 'https://zoukcal-ig-proxy.cloudfare-521.workers.dev';
-
-      function fetchPosts(username) {
-        if (cache[username]) { renderPosts(cache[username], username); return; }
-        grid.innerHTML = '<p class="ig-loading">Loading latest posts…</p>';
-        fetch(WORKER_URL + '/?username=' + encodeURIComponent(username))
-          .then(function(r) { return r.json(); })
-          .then(function(data) {
-            var edges = data.data.user.edge_owner_to_timeline_media.edges;
-            cache[username] = edges;
-            if (username === active) renderPosts(edges, username);
-          })
-          .catch(function() { if (username === active) showFallback(username); });
-      }
-
-      // Called by tab buttons (exposed globally)
-      window.switchIgAccount = function(username) {
-        if (username === active) return;
-        active = username;
-
-        // Update tab button states
-        var tabId = 'ig-tab-' + username.replace(/\./g, '-');
-        document.querySelectorAll('.ig-account-btn').forEach(function(btn) {
-          var on = btn.id === tabId;
-          btn.classList.toggle('active', on);
-          btn.setAttribute('aria-selected', on ? 'true' : 'false');
-        });
-
-        // Update follow link
-        followLink.href      = 'https://www.instagram.com/' + username + '/';
-        followLink.innerHTML = 'Follow @' + username + ' on Instagram &rarr;';
-
-        if (visible) fetchPosts(username);
-      };
-
-      function initLoad() {
-        if (visible) return;
-        visible = true;
-        fetchPosts(active);
-      }
-
-      // Trigger on scroll into view
-      var obs = new IntersectionObserver(function(entries) {
-        if (entries[0].isIntersecting) { initLoad(); obs.disconnect(); }
-      }, { threshold: 0.15 });
-      obs.observe(section);
-
-      // Also trigger immediately when any nav link to this section is clicked
-      document.querySelectorAll('a[href="#latest-posts"]').forEach(function(a) {
-        a.addEventListener('click', initLoad);
-      });
     })();
   </script>
 
