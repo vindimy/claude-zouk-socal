@@ -909,7 +909,7 @@
       </ul>
 
       <div class="nav-cta">
-        <a href="https://chat.whatsapp.com/HgPl6fK4h4zIjdHox06gbp?mode=gi_t"
+        <a href="#" data-wa
            class="btn btn-primary"
            target="_blank" rel="noopener noreferrer"
            aria-label="Join our WhatsApp community">
@@ -932,7 +932,7 @@
     <a href="#djs"        onclick="closeMobileMenu()">DJs</a>
     <a href="#organizers" onclick="closeMobileMenu()">Organizers</a>
     <a href="#join"       onclick="closeMobileMenu()">Join Us</a>
-    <a href="https://chat.whatsapp.com/HgPl6fK4h4zIjdHox06gbp?mode=gi_t"
+    <a href="#" data-wa
        class="btn btn-whatsapp"
        target="_blank" rel="noopener noreferrer">
       💬 Join WhatsApp Community
@@ -959,7 +959,7 @@
         </p>
         <div class="hero-ctas fade-in fade-in-delay-3">
           <a href="#calendar" class="btn btn-primary">Explore Events</a>
-          <a href="https://chat.whatsapp.com/HgPl6fK4h4zIjdHox06gbp?mode=gi_t"
+          <a href="#" data-wa
              class="btn btn-outline"
              target="_blank" rel="noopener noreferrer">
             💬 Join the Community
@@ -1069,7 +1069,7 @@
             </iframe>
             <div class="calendar-footer">
               <span>🕐 Times shown in Pacific Time</span>
-              <a href="https://chat.whatsapp.com/HgPl6fK4h4zIjdHox06gbp?mode=gi_t"
+              <a href="#" data-wa
                  target="_blank" rel="noopener noreferrer">
                 Want your event listed? Submit via WhatsApp →
               </a>
@@ -1089,7 +1089,7 @@
             </iframe>
             <div class="calendar-footer">
               <span>🕐 Times shown in Pacific Time</span>
-              <a href="https://chat.whatsapp.com/HgPl6fK4h4zIjdHox06gbp?mode=gi_t"
+              <a href="#" data-wa
                  target="_blank" rel="noopener noreferrer">
                 Want your event listed? Submit via WhatsApp →
               </a>
@@ -1655,7 +1655,7 @@
           San Diego — united by music, movement, and connection. Come dance with us!"
         </p>
         <div class="join-cta-wrap fade-in fade-in-delay-2">
-          <a href="https://chat.whatsapp.com/HgPl6fK4h4zIjdHox06gbp?mode=gi_t"
+          <a href="#" data-wa
              class="btn btn-whatsapp"
              target="_blank" rel="noopener noreferrer"
              aria-label="Join our WhatsApp community group">
@@ -1690,7 +1690,7 @@
             <li><a href="#organizers">Organizers</a></li>
             <li><a href="#join">Join Us</a></li>
             <li>
-              <a href="https://chat.whatsapp.com/HgPl6fK4h4zIjdHox06gbp?mode=gi_t"
+              <a href="#" data-wa
                  target="_blank" rel="noopener noreferrer">Submit an Event</a>
             </li>
           </ul>
@@ -1742,6 +1742,20 @@
     document.addEventListener('click', (e) => {
       if (!navbar.contains(e.target) && !mobileMenu.contains(e.target)) closeMobileMenu();
     });
+
+    // =====================================================
+    // WHATSAPP LINK PROTECTION
+    // Decode on click only — URL never appears in HTML source
+    // =====================================================
+    (function() {
+      var u = atob('aHR0cHM6Ly9jaGF0LndoYXRzYXBwLmNvbS9IZ1BsNmZLNGg0eklqZEhveDA2Z2JwP21vZGU9Z2lfdA==');
+      document.querySelectorAll('[data-wa]').forEach(function(el) {
+        el.addEventListener('click', function(e) {
+          e.preventDefault();
+          window.open(u, '_blank', 'noopener,noreferrer');
+        });
+      });
+    })();
 
     // =====================================================
     // CALENDAR TABS
