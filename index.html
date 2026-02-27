@@ -493,10 +493,29 @@
     .calendar-footer a    { font-size: 0.85rem; color: var(--color-gold); transition: color var(--transition); }
     .calendar-footer a:hover { color: var(--color-gold-light); }
 
+    .cal-controls-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-md);
+    }
+    .cal-subscribe-link {
+      font-size: 0.85rem;
+      color: var(--color-gold);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .cal-subscribe-link:hover { color: var(--color-gold-light); }
     .cal-view-toggle {
       display: flex;
-      justify-content: flex-end;
-      margin-bottom: var(--space-md);
+      align-items: center;
+      gap: 6px;
+    }
+    .cal-view-label {
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
     }
     .cal-view-btn {
       background: var(--color-base-mid);
@@ -1028,9 +1047,14 @@
           </button>
         </div>
 
-        <div class="cal-view-toggle fade-in fade-in-delay-2" role="group" aria-label="Calendar view">
-          <button class="cal-view-btn" id="cal-view-agenda" onclick="setCalView('AGENDA')">Agenda</button>
-          <button class="cal-view-btn" id="cal-view-month"  onclick="setCalView('MONTH')">Month</button>
+        <div class="cal-controls-bar fade-in fade-in-delay-2">
+          <a class="cal-subscribe-link" id="cal-subscribe" href="#"
+             target="_blank" rel="noopener noreferrer">Subscribe to Calendar ↗</a>
+          <div class="cal-view-toggle" role="group" aria-label="Calendar view">
+            <span class="cal-view-label">Calendar view:</span>
+            <button class="cal-view-btn" id="cal-view-agenda" onclick="setCalView('AGENDA')">Agenda</button>
+            <button class="cal-view-btn" id="cal-view-month"  onclick="setCalView('MONTH')">Month</button>
+          </div>
         </div>
 
         <div class="tab-panel active fade-in fade-in-delay-2"
@@ -1733,11 +1757,28 @@
       const panel = document.getElementById('panel-' + region);
       if (btn)   { btn.classList.add('active');   btn.setAttribute('aria-selected', 'true'); }
       if (panel) { panel.classList.add('active'); }
+      updateSubscribeLink(region);
     }
 
     // =====================================================
-    // CALENDAR VIEW TOGGLE (Agenda / Month)
+    // CALENDAR VIEW TOGGLE (Agenda / Month) + Subscribe link
     // =====================================================
+    var calIds = {
+      laoc: 'e14ups27np2c3mqf59anpa7f2c@group.calendar.google.com',
+      sd:   'fule3ncfeum8g8phf13jt2uac4@group.calendar.google.com',
+    };
+    var activeCalRegion = 'laoc';
+    function updateSubscribeLink(region) {
+      activeCalRegion = region || activeCalRegion;
+      var id     = calIds[activeCalRegion];
+      var idIcs  = id.replace('@', '%40');
+      var isMobile = window.innerWidth < 768;
+      var href = isMobile
+        ? 'webcal://calendar.google.com/calendar/ical/' + idIcs + '/public/basic.ics'
+        : 'https://calendar.google.com/calendar/r?cid=' + id;
+      var link = document.getElementById('cal-subscribe');
+      if (link) link.href = href;
+    }
     function setCalView(mode) {
       document.getElementById('cal-view-agenda').classList.toggle('active', mode === 'AGENDA');
       document.getElementById('cal-view-month').classList.toggle('active',  mode === 'MONTH');
@@ -1749,6 +1790,7 @@
     }
     // Default: agenda on mobile, month on desktop
     setCalView(window.innerWidth < 768 ? 'AGENDA' : 'MONTH');
+    updateSubscribeLink();
 
     // =====================================================
     // TEACHER REGION TABS
